@@ -9,16 +9,12 @@
 ##### messagesテーブル
 >チャットのメッセージを保存する
 
-columns |type   |constraint |index
-:-------|:------|:----------|:----:
-body    |text   |           |-
-image   |string |           |-
-group_id|integer|foreign_key|○※
-user_id |integer|foreign_key|-
-
-
-- belongs_to user
-- belongs_to group
+columns |type             |constraint       |index
+:-------|:----------------|:----------------|:----:
+body    |text             |                 |-
+image   |string           |                 |-
+group_id|references :group|foreign_key: true|○※
+user_id |references :user |foreign_key: true|-
 
 ※ グループごとにメッセージが管理されているため、検索しやすいようにgroup_idにindexを貼る
 
@@ -27,41 +23,54 @@ user_id |integer|foreign_key|-
 ##### usersテーブル
 >ユーザーを保存する
 
-columns           |type  |constraint          |index
-:-----------------|:-----|:-------------------|:----:
-name              |string|not null, unique    |○※
-email             |string|not null, unique    |-
-encrypted_password|string|not null            |-
+columns           |type  |constraint                   |index
+:-----------------|:-----|:----------------------------|:----:
+name              |string|null: false, unique: true    |○※
 
-
-- has_many messages
-- has_many group_members
-- has_many groups, through: :group_members
-
-※ グループにチャットメンバーを追加するときに名前から選択するため、nameはuniqueとし、indexを貼る
+※ グループにチャットメンバーを追加するときに名前から選択するため、unique: trueとしてindexを貼る
 
 <br>
 
 ##### groupsテーブル
 >グループを保存する
 
-columns|type  |constraint|index
-:------|:-----|:---------|:----:
-name   |string|not null  |-
-
-
-- has_many messages
-- has_many group_members
-- has_many users, through: :group_members
+columns|type  |constraint   |index
+:------|:-----|:------------|:----:
+name   |string|null: false  |-
 
 <br>
 
 ##### group_membersテーブル
 >グループとユーザーの対応関係を保存する
 
-columns |type   |constraint |index
-:-------|:------|:----------|:----:
-group_id|integer|foreign_key|○※
-user_id |integer|foreign_key|○※
+columns |type             |constraint       |index
+:-------|:----------------|:----------------|:----:
+group_id|references :group|foreign_key: true|○※
+user_id |references :user |foreign_key: true|○※
 
 ※ groups <=> users間の参照を高速化するため、indexを貼る
+
+<br>
+
+### アソシエーション
+    class Message < ActiveRecord::Base
+      belongs_to :user
+      belongs_to :group
+    end
+
+    class User < ActiveRecord::Base
+      has_many :messages
+      has_many :group_members
+      has_many :groups, through: :group_members
+    end
+
+    class Group < ActiveRecord::Base
+      has_many :messages
+      has_many :group_members
+      has_many :users, through: :group_members
+    end
+
+    class GroupMember < ActiveRecord::Base
+      belongs_to :user
+      belongs_to :group
+    end
