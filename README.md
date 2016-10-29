@@ -1,24 +1,76 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 開発環境
+* Ruby 2.3.1
+* Rails 5.0.0.1
 
-Things you may want to cover:
+## データベース設計
 
-* Ruby version
+##### messagesテーブル
+>チャットのメッセージを保存する
 
-* System dependencies
+columns |type             |constraint       |index
+:-------|:----------------|:----------------|:----:
+body    |text             |                 |-
+image   |string           |                 |-
+group_id|references :group|foreign_key: true|○※
+user_id |references :user |foreign_key: true|-
 
-* Configuration
+※ グループごとにメッセージが管理されているため、検索しやすいようにgroup_idにindexを貼る
 
-* Database creation
+<br>
 
-* Database initialization
+##### usersテーブル
+>ユーザーを保存する
 
-* How to run the test suite
+columns           |type  |constraint                   |index
+:-----------------|:-----|:----------------------------|:----:
+name              |string|null: false, unique: true    |○※
 
-* Services (job queues, cache servers, search engines, etc.)
+※ グループにチャットメンバーを追加するときに名前から選択するため、unique: trueとしてindexを貼る
 
-* Deployment instructions
+<br>
 
-* ...
+##### groupsテーブル
+>グループを保存する
+
+columns|type  |constraint   |index
+:------|:-----|:------------|:----:
+name   |string|null: false  |-
+
+<br>
+
+##### group_membersテーブル
+>グループとユーザーの対応関係を保存する
+
+columns |type             |constraint       |index
+:-------|:----------------|:----------------|:----:
+group_id|references :group|foreign_key: true|○※
+user_id |references :user |foreign_key: true|○※
+
+※ groups <=> users間の参照を高速化するため、indexを貼る
+
+<br>
+
+### アソシエーション
+    class Message < ActiveRecord::Base
+      belongs_to :user
+      belongs_to :group
+    end
+
+    class User < ActiveRecord::Base
+      has_many :messages
+      has_many :group_members
+      has_many :groups, through: :group_members
+    end
+
+    class Group < ActiveRecord::Base
+      has_many :messages
+      has_many :group_members
+      has_many :users, through: :group_members
+    end
+
+    class GroupMember < ActiveRecord::Base
+      belongs_to :user
+      belongs_to :group
+    end
