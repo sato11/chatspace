@@ -14,9 +14,12 @@ columns |type             |constraint       |index
 body    |text             |                 |-
 image   |string           |                 |-
 group_id|references :group|foreign_key: true|○※
-user_id |references :user |foreign_key: true|-
+user_id |references :user |foreign_key: true|○※1
 
 ※ グループごとにメッセージが管理されているため、検索しやすいようにgroup_idにindexを貼る
+
+__修正 (2016/11/1)__  
+※1 references型で外部キーをとるとデフォルトでindexを貼ってくれる
 
 <br>
 
