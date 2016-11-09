@@ -19,6 +19,34 @@
           .group__title Group3
           .group__content message
   .message-board
-    .message-board__top
+    .message-board__header
+      .message-board__header-left
+        .header__group-name sample group
+        .header__group-members Members: junichi sato
+      %span.message-board__header-right Edit
     .message-board__content
-    .message-board__input
+      %ul.messages
+        %li.message
+          .message__user
+            %span.message__user-name junichi sato
+            %span.message__posted-time 2016/11/9 19:42:15
+          .message__content sample
+        %li.message
+          .message__user
+            %span.message__user-name junichi sato
+            %span.message__posted-time 2016/11/9 19:45:34
+          .message__content great
+        %li.message
+          .message__user
+            %span.message__user-name junichi sato
+            %span.message__posted-time 2016/11/9 19:50:22
+          .message__content wow
+    .message-board__footer
+      %form
+        .footer__message
+          %textarea#form{placeholder: 'type a message'}
+          .image-upload
+            %label{for: "file-input"}
+              = fa_icon "picture-o"
+            %input{id: "file-input", type: "file"}
+        %input#send-button{type: :submit, value: 'Send'}
