@@ -1,5 +1,3 @@
-@import "./mixin/clearfix";
-
 .contents {
   height: 900px;
   min-width: 980px;
@@ -31,7 +29,7 @@
       }
     }
     .sidebar__column {
-      height: 100%;
+      height: calc(100% - 100px);
       padding: 0 20px;
       .groups .group {
         padding: 20px 0;
