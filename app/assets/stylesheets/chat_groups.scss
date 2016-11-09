@@ -1,3 +1,5 @@
+@import "./mixin/clearfix";
+
 .contents {
   height: 900px;
   min-width: 980px;
@@ -8,12 +10,40 @@
     background-color: #2f3e51;
     .sidebar__top {
       background-color: #253141;
-      height: 100px;
-      width: 100%;
+      height: 60px;
+      width: 260px;
+      padding: 20px;
+      .sidebar__top-left {
+        font-size: 16px;
+        font-weight: bold;
+        float: left;
+        color: #ffffff;
+        line-height: 60px;
+      }
+      .sidebar__top-right {
+        float: right;
+        color: #ffffff;
+        line-height: 60px;
+        a {
+          margin-left: 10px;
+        }
+      }
     }
     .sidebar__column {
       height: 100%;
-      width: 100%;
+      padding: 0 20px;
+      .groups .group {
+        padding: 20px 0;
+        .group__title {
+          color: #ffffff;
+          font-size: 15px;
+        }
+        .group__content {
+          color: #ffffff;
+          font-size: 11px;
+          margin-top: 5px;
+        }
+      }
     }
   }
   .message-board {

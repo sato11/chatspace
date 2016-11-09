@@ -1,7 +1,23 @@
 .contents
   .sidebar
     .sidebar__top
+      %span.sidebar__top-left junichi sato
+      .sidebar__top-right
+        %a
+          = fa_icon "pencil-square-o"
+        %a
+          = fa_icon "cog"
     .sidebar__column
+      %ul.groups
+        %li.group
+          .group__title Group1
+          .group__content message
+        %li.group
+          .group__title Group2
+          .group__content message
+        %li.group
+          .group__title Group3
+          .group__content message
   .message-board
     .message-board__top
     .message-board__content
