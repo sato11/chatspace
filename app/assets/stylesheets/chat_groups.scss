@@ -20,11 +20,13 @@
       }
       .sidebar__top-right {
         float: right;
-        color: #ffffff;
         line-height: 60px;
         a {
           margin-left: 3px;
           font-size: 20px;
+          i {
+            color: #ffffff;
+          }
         }
       }
     }
