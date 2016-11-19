@@ -4,7 +4,7 @@
       %span.sidebar__top-left junichi sato
       .sidebar__top-right
         = link_to fa_icon("pencil-square-o"), '#'
-        = link_to fa_icon("cog"), '#'
+        = link_to fa_icon("cog"), edit_user_registration_path
     .sidebar__column
       %ul.groups
         %li.group
@@ -22,7 +22,7 @@
         .header__group-name sample group
         .header__group-members Members: junichi sato
       .message-board__header-right
-        = link_to "Edit", edit_user_registration_path
+        = link_to "Edit", '#'
     .message-board__content
       %ul.messages
         %li.message
