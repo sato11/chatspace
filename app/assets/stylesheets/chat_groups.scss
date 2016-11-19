@@ -69,12 +69,17 @@
       }
       .message-board__header-right {
         float: right;
-        line-height: 40px;
         margin-top: 28px;
-        padding: 0 20px;
-        font-size: 14px;
-        color: #38AEF0;
-        border: solid 2px #38AEF0;
+          a {
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            line-height: 40px;
+            padding: 0 20px;
+            font-size: 14px;
+            color: #38AEF0;
+            border: solid 2px #38AEF0;
+          }
       }
     }
     .message-board__content {
