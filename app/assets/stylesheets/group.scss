@@ -240,6 +240,10 @@ $textarea_height: 50px;
     text-align: center;
   }
 
+  #new_chat_group {
+    @include clearfix();
+  }
+
   .chat-group-form__errors {
     margin: 30px 0;
     padding: 20px 40px;
