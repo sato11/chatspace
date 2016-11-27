@@ -7,19 +7,29 @@
           .chat-group-form__label
             = f.label :グループ名
         .chat-group-form__field--right
-          #chat_group_name.chat-group-form__input
-            = f.text_field :name, placeholder: "グループ名を入力してください"
+          #chat_group_name
+            = f.text_field :name, placeholder: "グループ名を入力してください", class: 'chat-group-form__input'
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
           .chat-group-form__label
             = f.label :チャットメンバーを追加
         .chat-group-form__field--right
           .chat-group-form__search.clearfix
-            #user-search-field.chat-group-form__input
-              = collection_check_boxes(:group, :user_ids, User.all, :id, :name) do |b|
-                = b.label { b.check_box + b.text }
+            #user-search-field
+              .chat-group-form__input
+                = collection_check_boxes(:group, :user_ids, User.all, :id, :name) do |b|
+                  = b.label { b.check_box + b.text }
+              #user-search-result
+      .chat-group-form__field.clearfix
+        .chat-group-form__field--left
+          .chat-group-form__label
+            = f.label :チャットメンバー
+        .chat-group-form__field--right
+          #chat-group-users
+            #chat-group-user-22.chat-group-user.clearfix
+              = f.hidden_field(:name => "chat_group[user_ids][]", :value => "22")
+              %p.chat-group-user__name seo_kyohei
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
         .chat-group-form__field--right
-          .chat-group-form__action-btn
-            = f.submit "Save"
+          = f.submit "Save", class: 'chat-group-form__action-btn'
