@@ -6,5 +6,10 @@ describe User do
       user.valid?
       expect(user.errors[:name]).to include("を入力してください。")
     end
+
+    it "is valid with name, email, password and password_confirmation" do
+      user = build(:user)
+      expect(user).to be_valid
+    end
   end
 end
