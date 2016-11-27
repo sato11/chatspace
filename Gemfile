@@ -21,6 +21,7 @@ gem 'devise'                              # Enable user functions
 
 group :development, :test do
   gem 'byebug', platform: :mri            # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pry-rails'                         # Call 'binding.pry' anywhere in the code to stop execution and start console
 end
 
 group :development do
