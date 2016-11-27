@@ -30,3 +30,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :test do
+  gem 'rspec-rails'                       # Provide for test framework
+  gem 'factory_girl_rails'                # Build sample instance for rspec
+  gem 'faker'                             # Generate random data as a tentative instance
+end
