@@ -7,8 +7,12 @@ class ChatGroupsController < ApplicationController
   end
 
   def create
-    Group.create(create_params)
-    redirect_to :root and return
+    @group = Group.new(create_params)
+    if @group.save
+      redirect_to :root, notice: 'グループが作成されました' and return
+    else
+      redirect_to new_chat_group_path, alert: 'グループが作成されませんでした' and return
+    end
   end
 
   private
