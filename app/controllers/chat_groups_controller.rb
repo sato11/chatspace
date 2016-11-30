@@ -18,6 +18,7 @@ class ChatGroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
+    @members = @group.group_members
   end
 
   def update
