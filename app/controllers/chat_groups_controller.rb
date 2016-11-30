@@ -22,6 +22,13 @@ class ChatGroupsController < ApplicationController
   end
 
   def update
+    @group = Group.find(params[:id])
+    if create_params[:name].present? && create_params[:user_ids].any?
+      @group.update(create_params)
+      redirect_to :root, notice: 'グループが更新されました' and return
+    else
+      redirect_to edit_chat_group_path, alert: 'グループが更新されませんでした' and return
+    end
   end
 
   private
