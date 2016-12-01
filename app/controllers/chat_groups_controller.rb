@@ -17,12 +17,12 @@ class ChatGroupsController < ApplicationController
   end
 
   def edit
-    find_group
+    set_group
     @members = @group.group_members
   end
 
   def update
-    find_group
+    set_group
     if create_params[:name].present?
       if create_params[:user_ids] == [""]
         params.require(:group)[:user_ids] << current_user.id.to_s
@@ -35,7 +35,7 @@ class ChatGroupsController < ApplicationController
   end
 
   private
-  def find_group
+  def set_group
     @group = Group.find(params[:id])
   end
 
