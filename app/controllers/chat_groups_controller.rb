@@ -1,4 +1,6 @@
 class ChatGroupsController < ApplicationController
+  before_action :set_group, only: [:edit, :update]
+
   def index
   end
 
@@ -17,12 +19,10 @@ class ChatGroupsController < ApplicationController
   end
 
   def edit
-    set_group
     @members = @group.group_members
   end
 
   def update
-    set_group
     if create_params[:name].present?
       if create_params[:user_ids] == [""]
         params.require(:group)[:user_ids] << current_user.id.to_s
