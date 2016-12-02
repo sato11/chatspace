@@ -7,15 +7,10 @@
         = link_to fa_icon("cog"), edit_user_registration_path
     .sidebar__column
       %ul.groups
-        %li.group
-          .group__title Group1
-          .group__content message
-        %li.group
-          .group__title Group2
-          .group__content message
-        %li.group
-          .group__title Group3
-          .group__content message
+        - @groups.each do |group|
+          %li.group
+            .group__title= group.name
+            .group__content message
   .message-board
     .message-board__header
       .message-board__header-left
