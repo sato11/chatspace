@@ -1,7 +1,7 @@
 .contents
   .sidebar
     .sidebar__top
-      %span.sidebar__top-left junichi sato
+      %span.sidebar__top-left= current_user.name
       .sidebar__top-right
         = link_to fa_icon("pencil-square-o"), new_chat_group_path
         = link_to fa_icon("cog"), edit_user_registration_path
