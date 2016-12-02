@@ -8,9 +8,10 @@
     .sidebar__column
       %ul.groups
         - @groups.each do |group|
-          %li.group
-            .group__title= group.name
-            .group__content message
+          =link_to(chat_group_messages_path(group)) do
+            %li.group
+              .group__title= group.name
+              .group__content message
   .message-board
     .message-board__header
       .message-board__header-left
