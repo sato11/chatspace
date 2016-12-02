@@ -3,8 +3,10 @@
   .message-board
     .message-board__header
       .message-board__header-left
-        .header__group-name sample group
-        .header__group-members Members: junichi sato
+        .header__group-name= @group.name
+        %span.header__group-members Members:
+        - @members.each do |member|
+          %span.header__group-members= member.user.name
       .message-board__header-right
         = link_to "Edit", '#'
     .message-board__content
