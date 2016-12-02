@@ -32,17 +32,22 @@
     }
     .sidebar__column {
       height: calc(100% - 100px);
-      padding: 0 20px;
-      .groups .group {
-        padding: 20px 0;
-        .group__title {
-          color: #ffffff;
-          font-size: 15px;
-        }
-        .group__content {
-          color: #ffffff;
-          font-size: 11px;
-          margin-top: 5px;
+      ul.groups a {
+        text-decoration: none;
+        li.group {
+          &:hover {
+            background-color: #3d526d;
+          }
+          padding: 20px;
+          .group__title {
+            color: #ffffff;
+            font-size: 15px;
+          }
+          .group__content {
+            color: #ffffff;
+            font-size: 11px;
+            margin-top: 5px;
+          }
         }
       }
     }
