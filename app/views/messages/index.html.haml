@@ -31,8 +31,7 @@
         = form_for @message, url: url_for(controller: 'messages', action: 'create') do |f|
           = f.text_field :body, placeholder: 'type a message', class: 'footer__message'
           .image-upload
-            %form
-              %label{for: "file-input"}
-                = fa_icon "picture-o"
-              %input{id: "file-input", type: "file"}
+            %label{for: "file-input"}
+              = fa_icon "picture-o"
+            %input{id: "file-input", type: "file"}
           = f.submit "Send", class: 'send-button'
