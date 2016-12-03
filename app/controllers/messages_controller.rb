@@ -7,7 +7,9 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.create(create_params)
+    @group = Group.find(params[:chat_group_id])
+    Message.create(body: create_params[:body], user_id: current_user.id, group_id: @group.id)
+    redirect_to chat_group_messages_path and return
   end
 
   private
