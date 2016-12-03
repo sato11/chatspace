@@ -1,3 +1,4 @@
+$white: #fff;
 .contents {
   height: 900px;
   min-width: 980px;
@@ -15,7 +16,7 @@
         font-size: 16px;
         font-weight: bold;
         float: left;
-        color: #ffffff;
+        color: $white;
         line-height: 60px;
       }
       .sidebar__top-right {
@@ -25,7 +26,7 @@
           margin-left: 3px;
           font-size: 20px;
           i {
-            color: #ffffff;
+            color: $white;
           }
         }
       }
@@ -40,11 +41,11 @@
           }
           padding: 20px;
           .group__title {
-            color: #ffffff;
+            color: $white;
             font-size: 15px;
           }
           .group__content {
-            color: #ffffff;
+            color: $white;
             font-size: 11px;
             margin-top: 5px;
           }
@@ -113,8 +114,6 @@
       }
     }
     .message-board__footer {
-      // height: 50px;
-      // width: 100%;
       padding: 20px 40px;
       background-color: #ddd;
       @include clearfix();
@@ -135,7 +134,7 @@
             width: 40px;
             height: 50px;
             line-height: 50px;
-            background-color: #ffffff;
+            background-color: $white;
             text-align: center;
             float: left;
             cursor: pointer;
@@ -148,7 +147,7 @@
           height: 50px;
           width: 100px;
           margin-left: 15px;
-          color: #ffffff;
+          color: $white;
           background-color: #38AEF0;
           border: none;
           float: left;
