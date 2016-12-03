@@ -118,36 +118,33 @@
       padding: 20px 40px;
       background-color: #ddd;
       @include clearfix();
-      form {
+      #form {
         margin: auto;
         .footer__message {
-          width: calc(100% - 115px);
-          textarea#form {
-            width: calc(100% - 40px);
+          width: calc(100% - 155px);
+          height: 50px;
+          padding: 15px 10px;
+          line-height: 20px;
+          border: none;
+          resize: none;
+          float: left;
+          box-sizing: border-box;
+        }
+        .image-upload {
+          label {
+            width: 40px;
             height: 50px;
-            padding: 15px 10px;
-            line-height: 20px;
-            border: none;
-            resize: none;
+            line-height: 50px;
+            background-color: #ffffff;
+            text-align: center;
             float: left;
-            box-sizing: border-box;
+            cursor: pointer;
           }
-          .image-upload {
-            label {
-              width: 40px;
-              height: 50px;
-              line-height: 50px;
-              background-color: #ffffff;
-              text-align: center;
-              float: left;
-              cursor: pointer;
-            }
-            input {
-              display: none;
-            }
+          input {
+            display: none;
           }
         }
-        input#send-button {
+        .send-button {
           height: 50px;
           width: 100px;
           margin-left: 15px;
