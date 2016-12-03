@@ -7,5 +7,10 @@ class MessagesController < ApplicationController
   end
 
   def create
+    @message.create(create_params)
+  end
+
+  private
+  def create_params
   end
 end
