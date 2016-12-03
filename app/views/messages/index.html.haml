@@ -12,11 +12,7 @@
     .message-board__content
       %ul.messages
         - @messages.each do |message|
-          %li.message
-            .message__user
-              %span.message__user-name= message.user.name
-              %span.message__posted-time= message.created_at
-            .message__content= message.body
+          = render partial: "message", locals: { message: message }
     .message-board__footer
       #form
         = form_for @message, url: url_for(controller: 'messages', action: 'create') do |f|
