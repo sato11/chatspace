@@ -1,45 +1,10 @@
 .contents
-  .sidebar
-    .sidebar__top
-      %span.sidebar__top-left junichi sato
-      .sidebar__top-right
-        = link_to fa_icon("pencil-square-o"), new_chat_group_path
-        = link_to fa_icon("cog"), edit_user_registration_path
-    .sidebar__column
-      %ul.groups
-        %li.group
-          .group__title Group1
-          .group__content message
-        %li.group
-          .group__title Group2
-          .group__content message
-        %li.group
-          .group__title Group3
-          .group__content message
+  = render partial: "layouts/sidebar"
   .message-board
     .message-board__header
       .message-board__header-left
-        .header__group-name sample group
-        .header__group-members Members: junichi sato
       .message-board__header-right
-        = link_to "Edit", '#'
     .message-board__content
-      %ul.messages
-        %li.message
-          .message__user
-            %span.message__user-name junichi sato
-            %span.message__posted-time 2016/11/9 19:42:15
-          .message__content sample
-        %li.message
-          .message__user
-            %span.message__user-name junichi sato
-            %span.message__posted-time 2016/11/9 19:45:34
-          .message__content great
-        %li.message
-          .message__user
-            %span.message__user-name junichi sato
-            %span.message__posted-time 2016/11/9 19:50:22
-          .message__content wow
     .message-board__footer
       %form
         .footer__message

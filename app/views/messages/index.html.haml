@@ -1,0 +1,37 @@
+.contents
+  = render partial: "layouts/sidebar"
+  .message-board
+    .message-board__header
+      .message-board__header-left
+        .header__group-name= @group.name
+        %span.header__group-members Members:
+        - @members.each do |member|
+          %span.header__group-members= member.user.name
+      .message-board__header-right
+        = link_to "Edit", edit_chat_group_path(@group)
+    .message-board__content
+      %ul.messages
+        %li.message
+          .message__user
+            %span.message__user-name junichi sato
+            %span.message__posted-time 2016/11/9 19:42:15
+          .message__content sample
+        %li.message
+          .message__user
+            %span.message__user-name junichi sato
+            %span.message__posted-time 2016/11/9 19:45:34
+          .message__content great
+        %li.message
+          .message__user
+            %span.message__user-name junichi sato
+            %span.message__posted-time 2016/11/9 19:50:22
+          .message__content wow
+    .message-board__footer
+      %form
+        .footer__message
+          %textarea#form{placeholder: 'type a message'}
+          .image-upload
+            %label{for: "file-input"}
+              = fa_icon "picture-o"
+            %input{id: "file-input", type: "file"}
+        %input#send-button{type: :submit, value: 'Send'}

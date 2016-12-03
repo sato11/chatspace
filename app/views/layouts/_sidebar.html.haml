@@ -1,0 +1,13 @@
+.sidebar
+  .sidebar__top
+    %span.sidebar__top-left= current_user.name
+    .sidebar__top-right
+      = link_to fa_icon("pencil-square-o"), new_chat_group_path
+      = link_to fa_icon("cog"), edit_user_registration_path
+  .sidebar__column
+    %ul.groups
+      - @groups.each do |group|
+        =link_to(chat_group_messages_path(group)) do
+          %li.group
+            .group__title= group.name
+            .group__content message
