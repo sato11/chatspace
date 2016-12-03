@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    Message.create(body: create_params[:body], user_id: current_user.id, group_id: @group.id)
+    Message.create(create_params)
     redirect_to chat_group_messages_path and return
   end
 
@@ -19,6 +19,6 @@ class MessagesController < ApplicationController
   end
 
   def create_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body).merge(user_id: current_user.id, group_id: @group.id)
   end
 end
