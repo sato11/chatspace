@@ -1,7 +1,7 @@
 .chat-group-form
-  %h1 チャットグループ編集
-  #edit_chat_group_22.edit_chat_group
-    = form_for @group, url: url_for(controller: 'chat_groups', action: 'update') do |f|
+  %h1 新規チャットグループ
+  #new_chat_group.new_chat_group
+    = form_for @group do |f|
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
           .chat-group-form__label
@@ -28,8 +28,7 @@
           .chat-group-user.clearfix
             %input{:name => "chat_group[user_ids][]", :type => "hidden", :value => "22"}/
             %p.chat-group-user__name
-              - @members.each do |member|
-                = member.user.name
+              = current_user.name
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
         .chat-group-form__field--right

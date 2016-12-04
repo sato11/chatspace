@@ -1,12 +1,17 @@
+@import "../color";
 .flash-message {
   height: 30px;
   line-height: 30px;
   color: white;
   text-align: center;
   p.flash-message__notice {
-    background-color: #38aef0;
+    background-color: $blue;
+    position: fixed;
+    width: 100%;
   }
   p.flash-message__alert {
-    background-color: #d65f4c;
+    background-color: $red;
+    position: fixed;
+    width: 100%;
   }
 }

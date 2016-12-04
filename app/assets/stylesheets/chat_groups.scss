@@ -1,3 +1,4 @@
+@import "./color";
 .contents {
   height: 900px;
   min-width: 980px;
@@ -5,9 +6,10 @@
     height: 100%;
     width: 300px;
     float: left;
-    background-color: #2f3e51;
+    background-color: $navy;
+    position: fixed;
     .sidebar__top {
-      background-color: #253141;
+      background-color: $darkNavy;
       height: 60px;
       width: 260px;
       padding: 20px;
@@ -15,7 +17,7 @@
         font-size: 16px;
         font-weight: bold;
         float: left;
-        color: #ffffff;
+        color: white;
         line-height: 60px;
       }
       .sidebar__top-right {
@@ -25,7 +27,7 @@
           margin-left: 3px;
           font-size: 20px;
           i {
-            color: #ffffff;
+            color: white;
           }
         }
       }
@@ -36,15 +38,15 @@
         text-decoration: none;
         li.group {
           &:hover {
-            background-color: #3d526d;
+            background-color: $lightNavy;
           }
           padding: 20px;
           .group__title {
-            color: #ffffff;
+            color: white;
             font-size: 15px;
           }
           .group__content {
-            color: #ffffff;
+            color: white;
             font-size: 11px;
             margin-top: 5px;
           }
@@ -55,21 +57,25 @@
   .message-board {
     width: calc(100% - 300px);
     float: left;
+    padding-left: 300px;
     .message-board__header {
       @include clearfix();
       height: 100px;
+      width: calc(100% - 380px);
       padding: 0 40px;
+      position: fixed;
+      background-color: white;
       .message-board__header-left {
         float: left;
         .header__group-name {
           padding-top: 35px;
           font-size: 20px;
-          color: #333333;
+          color: $black;
         }
         .header__group-members {
           padding-top: 10px;
           font-size: 12px;
-          color: #999999;
+          color: $gray;
         }
       }
       .message-board__header-right {
@@ -82,28 +88,28 @@
             line-height: 40px;
             padding: 0 20px;
             font-size: 14px;
-            color: #38AEF0;
-            border: solid 2px #38AEF0;
+            color: $blue;
+            border: solid 2px $blue;
           }
       }
     }
     .message-board__content {
-      height: 697px;
-      padding: 6px 40px;
-      background-color: #fafafa;
-      border-top: solid 1px #eeeeee;
+      padding: 100px 40px;
+      background-color: $lightGray;
+      border-top: solid 1px #eee;
+      min-height: 697px;
       ul.messages li.message {
         .message__user {
           padding-top: 40px;
           .message__user-name {
             font-weight: bold;
             font-size: 14px;
-            color: #333333;
+            color: $black;
             margin-right: 10px;
           }
           .message__posted-time {
             font-size: 12px;
-            color: #999999;
+            color: $gray;
           }
         }
         .message__content {
@@ -113,46 +119,46 @@
       }
     }
     .message-board__footer {
-      // height: 50px;
-      // width: 100%;
       padding: 20px 40px;
       background-color: #ddd;
       @include clearfix();
-      form {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      height: 90;
+      width: calc(100% - 380px);
+      #form {
         margin: auto;
         .footer__message {
-          width: calc(100% - 115px);
-          textarea#form {
-            width: calc(100% - 40px);
+          width: calc(100% - 155px);
+          height: 50px;
+          padding: 15px 10px;
+          line-height: 20px;
+          border: none;
+          resize: none;
+          float: left;
+          box-sizing: border-box;
+        }
+        .image-upload {
+          label {
+            width: 40px;
             height: 50px;
-            padding: 15px 10px;
-            line-height: 20px;
-            border: none;
-            resize: none;
+            line-height: 50px;
+            background-color: white;
+            text-align: center;
             float: left;
-            box-sizing: border-box;
+            cursor: pointer;
           }
-          .image-upload {
-            label {
-              width: 40px;
-              height: 50px;
-              line-height: 50px;
-              background-color: #ffffff;
-              text-align: center;
-              float: left;
-              cursor: pointer;
-            }
-            input {
-              display: none;
-            }
+          input {
+            display: none;
           }
         }
-        input#send-button {
+        .send-button {
           height: 50px;
           width: 100px;
           margin-left: 15px;
-          color: #ffffff;
-          background-color: #38AEF0;
+          color: white;
+          background-color: $blue;
           border: none;
           float: left;
         }
