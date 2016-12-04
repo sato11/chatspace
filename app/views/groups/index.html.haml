@@ -6,11 +6,5 @@
       .message-board__header-right
     .message-board__content
     .message-board__footer
-      %form
+      #form
         .footer__message
-          %textarea#form{placeholder: 'type a message'}
-          .image-upload
-            %label{for: "file-input"}
-              = fa_icon "picture-o"
-            %input{id: "file-input", type: "file"}
-        %input#send-button{type: :submit, value: 'Send'}
