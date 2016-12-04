@@ -10,12 +10,12 @@ class MessagesController < ApplicationController
 
   def create
     Message.create(create_params)
-    redirect_to chat_group_messages_path and return
+    redirect_to group_messages_path and return
   end
 
   private
   def set_group
-    @group = Group.find(params[:chat_group_id])
+    @group = Group.find(params[:group_id])
   end
 
   def create_params
