@@ -1,6 +1,6 @@
 $(function() {
   function buildHTML(message) {
-    var html = $('<li class="message">').append(message.content);
+    var html = $('<li class="message">').append(message.body);
     return html;
   }
 
