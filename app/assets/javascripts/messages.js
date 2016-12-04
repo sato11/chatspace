@@ -8,9 +8,10 @@ $(function() {
     e.preventDefault();
     var textField = $('.footer__message');
     var message = textField.val();
+    var groupId = $('form.new_message input#message_group_id').attr('value');
     $.ajax({
       type: 'POST',
-      url: '/messages.json',
+      url: '/groups/' + groupId + '/messages.json',
       data: {
         message: {
           content: message
