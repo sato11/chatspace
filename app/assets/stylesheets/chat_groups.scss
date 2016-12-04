@@ -70,12 +70,12 @@
         .header__group-name {
           padding-top: 35px;
           font-size: 20px;
-          color: #333333;
+          color: $black;
         }
         .header__group-members {
           padding-top: 10px;
           font-size: 12px;
-          color: #999999;
+          color: $gray;
         }
       }
       .message-board__header-right {
@@ -95,7 +95,7 @@
     }
     .message-board__content {
       padding: 100px 40px;
-      background-color: #fafafa;
+      background-color: $lightGray;
       border-top: solid 1px #eee;
       min-height: 697px;
       ul.messages li.message {
@@ -104,12 +104,12 @@
           .message__user-name {
             font-weight: bold;
             font-size: 14px;
-            color: #333333;
+            color: $black;
             margin-right: 10px;
           }
           .message__posted-time {
             font-size: 12px;
-            color: #999999;
+            color: $gray;
           }
         }
         .message__content {
