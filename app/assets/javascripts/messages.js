@@ -14,7 +14,7 @@ $(function() {
       url: '/groups/' + groupId + '/messages.json',
       data: {
         message: {
-          content: message
+          body: message
         }
       },
       datatype: 'json'
