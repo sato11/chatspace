@@ -8,14 +8,14 @@
         - @members.each do |member|
           %span.header__group-members= member.user.name
       .message-board__header-right
-        = link_to "Edit", edit_chat_group_path(@group)
+        = link_to "Edit", edit_group_path(@group)
     .message-board__content
       %ul.messages
         - @messages.each do |message|
           = render partial: "message", locals: { message: message }
     .message-board__footer
       #form
-        = form_for @message, url: url_for(controller: 'messages', action: 'create') do |f|
+        = form_for [@group, @message] do |f|
           = f.text_field :body, placeholder: 'type a message', class: 'footer__message'
           .image-upload
             %label{for: "file-input"}
