@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
 
   def create
     message = Message.new(create_params)
+    @messages = Message.where(group_id: @group.id)
     if message.save
       respond_to do |format|
         format.html { redirect_to group_messages_path }
