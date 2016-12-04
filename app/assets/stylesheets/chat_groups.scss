@@ -7,6 +7,7 @@ $white: #fff;
     width: 300px;
     float: left;
     background-color: #2f3e51;
+    position: fixed;
     .sidebar__top {
       background-color: #253141;
       height: 60px;
@@ -56,10 +57,14 @@ $white: #fff;
   .message-board {
     width: calc(100% - 300px);
     float: left;
+    padding-left: 300px;
     .message-board__header {
       @include clearfix();
       height: 100px;
+      width: calc(100% - 380px);
       padding: 0 40px;
+      position: fixed;
+      background-color: $white;
       .message-board__header-left {
         float: left;
         .header__group-name {
@@ -89,8 +94,7 @@ $white: #fff;
       }
     }
     .message-board__content {
-      height: 697px;
-      padding: 6px 40px;
+      padding: 100px 40px;
       background-color: #fafafa;
       border-top: solid 1px #eeeeee;
       ul.messages li.message {
@@ -117,6 +121,11 @@ $white: #fff;
       padding: 20px 40px;
       background-color: #ddd;
       @include clearfix();
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      height: 90;
+      width: calc(100% - 380px);
       #form {
         margin: auto;
         .footer__message {
