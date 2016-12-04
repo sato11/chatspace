@@ -11,8 +11,7 @@
         = link_to "Edit", edit_group_path(@group)
     .message-board__content
       %ul.messages
-        - @messages.each do |message|
-          = render partial: "message", locals: { message: message }
+        = render @messages
     .message-board__footer
       #form
         = form_for [@group, @message] do |f|
