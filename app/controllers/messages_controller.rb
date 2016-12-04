@@ -9,8 +9,12 @@ class MessagesController < ApplicationController
   end
 
   def create
-    Message.create(create_params)
-    redirect_to group_messages_path and return
+    message = Message.new(create_params)
+    if message.save
+      redirect_to group_messages_path and return
+    else
+      redirect_to group_messages_path, alert: 'メッセージが投稿されませんでした' and return
+    end
   end
 
   private
