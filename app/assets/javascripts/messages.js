@@ -22,7 +22,7 @@ $(function() {
     .done(function(data) {
       var html = buildHTML(data);
       $('.messages').append(html);
-      textField.val();
+      textField.val('');
     })
     .fail(function() {
       alert('error');
