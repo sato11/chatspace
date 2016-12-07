@@ -23,6 +23,7 @@ $(function() {
       var html = buildHTML(data);
       $('.messages').append(html);
       textField.val('');
+      $('input[type="submit"]').prop('disabled', false);
     })
     .fail(function() {
       alert('error');
