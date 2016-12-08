@@ -1,6 +1,18 @@
 $(function() {
   function buildHTML(message) {
-    var html = $('<li class="message">').append(message.body);
+    var user = $('.sidebar__top-left').html();
+    var html = $('<li class="message">').append(
+                  '<div class="message__user">' +
+                    '<span class="message__user-name">' +
+                      user +
+                    '</span>' +
+                    '<span class="message__posted-time">' +
+                      message.created_at +
+                    '</span>' +
+                  '<div class="message__content">' +
+                    message.body +
+                  '</div>' +
+                '</li>');
     return html;
   }
 
