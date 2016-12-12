@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     message = Message.new(create_params)
     if message.save
       respond_to do |format|
-        format.html { redirect_to group_messages_path }
+        format.html { redirect_to group_messages_path, notice: 'メッセージが投稿されました' }
         format.json { render json: message }
       end
     else
