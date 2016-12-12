@@ -37,6 +37,7 @@ $(function() {
     .done(function(data) {
       var html = buildHTML(data);
       $('.messages').append(html);
+      window.scrollTo(0, document.body.scrollHeight);
       textField.val('');
       $('input[type="submit"]').prop('disabled', false);
     })
