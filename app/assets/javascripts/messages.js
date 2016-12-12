@@ -1,4 +1,6 @@
 $(function() {
+  // メッセージ毎にhtmlを構築する作業を関数として定義
+  // 部分テンプレート_messageの構造に沿う
   function buildHTML(message) {
     var user = $('.sidebar__top-left').html();
     var html = $('<li class="message">').append(
@@ -16,6 +18,7 @@ $(function() {
     return html;
   }
 
+  // submit時にjsonで非同期通信を行う
   $('#form form').on('submit', function(e) {
     e.preventDefault();
     var textField = $('.footer__message');
