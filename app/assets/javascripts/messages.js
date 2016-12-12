@@ -19,7 +19,7 @@ $(function() {
   }
 
   // submit時にjsonで非同期通信を行う
-  $('#form form').on('submit', function(e) {
+  $('#message-form form').on('submit', function(e) {
     e.preventDefault();
     var textField = $('.footer__message');
     var message = textField.val();
