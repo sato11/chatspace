@@ -13,8 +13,9 @@
       %ul.messages
         = render @messages
     .message-board__footer
-      #form
+      #message-form
         = form_for [@group, @message] do |f|
+          = f.hidden_field :group_id, value: @group.id
           = f.text_field :body, placeholder: 'type a message', class: 'footer__message'
           .image-upload
             %label{for: "file-input"}
