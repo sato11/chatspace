@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
         format.json { render json: @group }
       end
     else
-      redirect_to new_chat_group_path, alert: 'グループが作成されませんでした' and return
+      redirect_to new_group_path, alert: 'グループが作成されませんでした' and return
     end
   end
 
@@ -32,7 +32,7 @@ class GroupsController < ApplicationController
         format.json { render json: @group }
       end
     else
-      redirect_to edit_chat_group_path, alert: 'グループが更新されませんでした' and return
+      redirect_to edit_group_path, alert: 'グループが更新されませんでした' and return
     end
   end
 
