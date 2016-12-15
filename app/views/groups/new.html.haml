@@ -16,9 +16,7 @@
         .chat-group-form__field--right
           .chat-group-form__search.clearfix
             #user-search-field
-              .chat-group-form__input
-                = collection_check_boxes(:group, :user_ids, User.all, :id, :name) do |b|
-                  = b.label { b.check_box + b.text }
+              %input.chat-group-form__input
               #user-search-result
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
@@ -27,8 +25,8 @@
         .chat-group-form__field--right
           .chat-group-user.clearfix
             %input{:name => "chat_group[user_ids][]", :type => "hidden", :value => "22"}/
-            %p.chat-group-user__name
-              = current_user.name
+            %ul.chat-group-user__name
+              %li= current_user.name
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
         .chat-group-form__field--right
