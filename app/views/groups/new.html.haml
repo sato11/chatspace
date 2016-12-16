@@ -18,12 +18,13 @@
             #user-search-field
               %input.chat-group-form__input
               %button{id: 'search'}
-      #user-search-result
-        .chat-group-form__field.clearfix
-          .chat-group-form__field--left
-          .chat-group-form__field--right
-            %ul#result-field
-              %li sample
+      #user-search-result.clearfix
+        #user-search-result__field--left
+        #user-search-result__field--right
+          %ul#result-field
+            %li.result-list
+              %span.result-list--left sample
+              %span.result-list--right 追加
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
           .chat-group-form__label
