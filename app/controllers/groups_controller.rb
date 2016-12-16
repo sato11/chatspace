@@ -7,15 +7,18 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    users = User.all
+    respond_to do |format|
+      format.html
+      format.json { render json: users }
+    end
   end
 
   def create
     @group = Group.new(create_params)
-    if @group.save
-      respond_to do |format|
-        format.html { redirect_to :root, notice: 'グループが作成されました' }
-        format.json { render json: @group }
-      end
+    if @group.name.present? && @group.group_members.any?
+      @group.save
+      redirect_to :root, notice: 'グループが作成されました' and return
     else
       redirect_to new_group_path, alert: 'グループが作成されませんでした' and return
     end
