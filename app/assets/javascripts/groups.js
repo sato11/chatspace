@@ -5,7 +5,7 @@ $(function() {
       if (input == name) {
         var matchedUser = name;
         var list = $('<li>').append(matchedUser + '</li>')
-        $('#user-search-result').append(list)
+        $('#result-field').append(list)
       }
     });
   }

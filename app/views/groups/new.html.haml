@@ -17,8 +17,13 @@
           .chat-group-form__search.clearfix
             #user-search-field
               %input.chat-group-form__input
-              %ul#user-search-result
               %button{id: 'search'}
+      #user-search-result
+        .chat-group-form__field.clearfix
+          .chat-group-form__field--left
+          .chat-group-form__field--right
+            %ul#result-field
+              %li sample
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
           .chat-group-form__label
