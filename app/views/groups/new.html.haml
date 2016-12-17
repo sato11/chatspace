@@ -27,10 +27,9 @@
           .chat-group-form__label
             = f.label :チャットメンバー
         .chat-group-form__field--right
-          .chat-group-user.clearfix
-            %input{:name => "chat_group[user_ids][]", :type => "hidden", :value => "22"}/
-            %ul.chat-group-user__name
-              %li= current_user.name
+          %ul#added-users
+            %li.chat-group-user
+              .chat-group-user__name= current_user.name
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
         .chat-group-form__field--right

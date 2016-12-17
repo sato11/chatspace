@@ -1,5 +1,5 @@
 $(function() {
-  function buildHTML(name) {
+  function addUserHTML(name) {
     var html = $('<li class="result-list">').append(
                     '<span class="result-list--left">' +
                       name +
@@ -9,14 +9,13 @@ $(function() {
                     '</span>' +
                   '</li>');
     $('#result-field').append(html);
-    return html;
   }
 
   function getUser(users, input) {
     $.each(users, function(i, user) {
       var name = user.name;
       if (input == name) {
-        var html = buildHTML(name);
+        addUserHTML(name);
         return false;
       }
     });
@@ -35,5 +34,23 @@ $(function() {
       .fail(function() {
         alert('error');
       })
+  });
+
+  function addedUserHTML(name) {
+    var html = $('<li class="chat-group-user">').append(
+                    '<div class="chat-group-user__name">' +
+                      name +
+                    '</div>' +
+                    '<div class="chat-group-user__btn chat-group-user__btn--remove">' +
+                      "削除" +
+                    '</div>' +
+                  '</li>');
+    return html;
+  }
+
+  $(document).on('click', '.result-list--right', function() {
+    var name = $(this).prev().html();
+    var html = addedUserHTML(name);
+    $('#added-users').append(html);
   });
 });
