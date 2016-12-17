@@ -52,5 +52,10 @@ $(function() {
     var name = $(this).prev().html();
     var html = addedUserHTML(name);
     $('#added-users').append(html);
+    $(this).parent().remove();
   });
+
+  $(document).on('click', '.chat-group-user__btn--remove', function() {
+    $(this).parent().remove();
+  })
 });
