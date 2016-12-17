@@ -1,6 +1,6 @@
 .chat-group-form
   %h1 チャットグループ編集
-  #edit_chat_group_22.edit_chat_group
+  #new_chat_group.new_chat_group
     = form_for @group do |f|
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
@@ -17,17 +17,22 @@
           .chat-group-form__search.clearfix
             #user-search-field
               %input.chat-group-form__input
-              #user-search-result
+              %button{id: 'search'}
+      #user-search-result.clearfix
+        #user-search-result__field--left
+        #user-search-result__field--right
+          %ul#result-field
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
           .chat-group-form__label
             = f.label :チャットメンバー
         .chat-group-form__field--right
-          .chat-group-user.clearfix
-            %input{:name => "chat_group[user_ids][]", :type => "hidden", :value => "22"}/
-            %ul.chat-group-user__name
-              - @members.each do |member|
-                %li= member.user.name
+          %ul#added-users
+            - @members.each do |member|
+              %li.chat-group-user
+                .chat-group-user__name= member.user.name
+                .chat-group-user__btn.chat-group-user__btn--remove 削除
+                %input{type: 'hidden', value: member.id}
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
         .chat-group-form__field--right
