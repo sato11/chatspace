@@ -63,7 +63,7 @@ $(function() {
   });
 
 
-  $('.chat-group-form__action-btn').on('click', function(e) {
+  $('.chat-group-form__action-btn--new').on('click', function(e) {
     e.preventDefault();
     var name = $('#chat_group_name input').val();
     var user_ids = []
@@ -85,7 +85,34 @@ $(function() {
     .done(function() {
     })
     .fail(function() {
-      alert('error');
+      alert('error creating');
+    })
+  });
+
+  $('.chat-group-form__action-btn--edit').on('click', function(e) {
+    e.preventDefault();
+    var name = $('#chat_group_name input').val();
+    var user_ids = []
+    $('.chat-group-user input').each(function() {
+      user_ids.push( $(this).attr('value') );
+    });
+    var groupId = $('#group_group_id').attr('value');
+
+    $.ajax({
+      type: 'PATCH',
+      url: '/groups/' + groupId,
+      data: {
+        group: {
+          name: name,
+          user_ids: user_ids
+        }
+      },
+      datatype: 'html'
+    })
+    .done(function() {
+    })
+    .fail(function() {
+      alert('error updating');
     })
   });
 });
