@@ -30,6 +30,7 @@
           %ul#added-users
             %li.chat-group-user
               .chat-group-user__name= current_user.name
+              %input{type: 'hidden', value: current_user.id}
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
         .chat-group-form__field--right
