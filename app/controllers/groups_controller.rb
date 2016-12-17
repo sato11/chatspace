@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
+  before_action :pass_users_to_json, only: [:new, :edit]
 
   def index
     @groups = current_user.groups
@@ -7,11 +8,6 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    users = User.all
-    respond_to do |format|
-      format.html
-      format.json { render json: users }
-    end
   end
 
   def create
@@ -26,11 +22,6 @@ class GroupsController < ApplicationController
 
   def edit
     @members = @group.group_members
-    users = User.all
-    respond_to do |format|
-      format.html
-      format.json { render json: users }
-    end
   end
 
   def update
@@ -49,6 +40,14 @@ class GroupsController < ApplicationController
   private
   def set_group
     @group = Group.find(params[:id])
+  end
+
+  def pass_users_to_json
+    users = User.all
+    respond_to do |format|
+      format.html
+      format.json { render json: users }
+    end
   end
 
   def create_params
