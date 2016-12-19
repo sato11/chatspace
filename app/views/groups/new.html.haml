@@ -2,26 +2,7 @@
   %h1 新規チャットグループ
   #new_chat_group.new_chat_group
     = form_for @group do |f|
-      .chat-group-form__field.clearfix
-        .chat-group-form__field--left
-          .chat-group-form__label
-            = f.label :グループ名
-        .chat-group-form__field--right
-          #chat_group_name
-            = f.text_field :name, placeholder: "グループ名を入力してください", class: 'chat-group-form__input'
-      .chat-group-form__field.clearfix
-        .chat-group-form__field--left
-          .chat-group-form__label
-            = f.label :チャットメンバーを追加
-        .chat-group-form__field--right
-          .chat-group-form__search.clearfix
-            #user-search-field
-              %input.chat-group-form__input
-              %button{id: 'search'}
-      #user-search-result.clearfix
-        #user-search-result__field--left
-        #user-search-result__field--right
-          %ul#result-field
+      = render partial: "form", locals: {f: f}
       .chat-group-form__field.clearfix
         .chat-group-form__field--left
           .chat-group-form__label
