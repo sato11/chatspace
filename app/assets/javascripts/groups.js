@@ -61,10 +61,15 @@ $(function() {
     var html = addedUserHTML(name, id);
     $('#added-users').append(html);
     $(this).parent().remove();
+    // collection_check_boxesの該当ユーザーにチェックを入れる
+    $('input[value=' + id + ']').prop("checked", true);
   });
 
   // 削除ボタンがクリックされた時に該当するユーザーをチャットメンバーから削除する
   $(document).on('click', '.chat-group-user__btn--remove', function() {
     $(this).parent().remove();
+    // collection_check_boxesの該当ユーザーからチェックを外す
+    var id = $(this).next().attr('value');
+    $('input[value=' + id + ']').prop("checked", false);
   });
 });

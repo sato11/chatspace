@@ -15,6 +15,9 @@
       .chat-group-form__search.clearfix
         #user-search-field
           %input.chat-group-form__input
+          #chat-group-form__checkbox
+            = collection_check_boxes(:group, :user_ids, User.all, :id, :name) do |b|
+              = b.label { b.check_box + b.text }
           %button{id: 'search'}
   #user-search-result.clearfix
     #user-search-result__field--left
@@ -30,7 +33,7 @@
           %li.chat-group-user
             .chat-group-user__name= member.name
             .chat-group-user__btn.chat-group-user__btn--remove 削除
-            = f.hidden_field :user_ids
+            %input{value: member.id, type: 'hidden'}
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right

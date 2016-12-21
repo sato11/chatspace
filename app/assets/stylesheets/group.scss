@@ -285,6 +285,10 @@ $textarea_height: 50px;
     .chat-group-form__field--right {
       float: right;
       width: 70%;
+
+      #chat-group-form__checkbox {
+        // display: none;
+      }
     }
 
     .chat-group-form__label {
