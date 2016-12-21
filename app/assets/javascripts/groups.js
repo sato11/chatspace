@@ -25,7 +25,7 @@ $(function() {
   }
 
   // ユーザー検索時にjsonと通信する
-  $('#search').on('click', function(e) {
+  $('#user-search-field .chat-group-form__input').on('keyup', function(e) {
     e.preventDefault();
     var textField = $('#user-search-field .chat-group-form__input');
     var input = textField.val();
@@ -33,7 +33,6 @@ $(function() {
       .done(function(data) {
         $('#result-field li').remove();
         getUser(data, input);
-        textField.val('');
       })
       .fail(function() {
         alert('error');
@@ -60,6 +59,7 @@ $(function() {
     var id = $(this).next().attr('value');
     var html = addedUserHTML(name, id);
     $('#added-users').append(html);
+    $('#user-search-field .chat-group-form__input').val('');
     $(this).parent().remove();
     // collection_check_boxesの該当ユーザーにチェックを入れる
     $('input[value=' + id + ']').prop("checked", true);
