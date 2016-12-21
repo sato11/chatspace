@@ -17,7 +17,6 @@
           #chat-group-form__checkbox
             = collection_check_boxes(:group, :user_ids, User.all, :id, :name) do |b|
               = b.label { b.check_box + b.text }
-          %button{id: 'search'}
   #user-search-result.clearfix
     #user-search-result__field--left
     #user-search-result__field--right
