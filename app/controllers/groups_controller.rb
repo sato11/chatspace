@@ -8,11 +8,14 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @group.users << current_user
+    @members = @group.users
   end
 
   def create
     @group = Group.new(create_params)
-    if @group.name.present? && @group.group_members.any?
+    @group.users << current_user
+    if @group.name.present? && @group.users.any?
       @group.save
       redirect_to :root, notice: 'グループが作成されました' and return
     else
@@ -21,7 +24,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @members = @group.group_members
+    @members = @group.users
   end
 
   def update
