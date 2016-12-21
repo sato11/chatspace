@@ -1,18 +1,4 @@
 .chat-group-form
   %h1 新規チャットグループ
   #new_chat_group.new_chat_group
-    = form_for @group do |f|
-      = render partial: "form", locals: {f: f}
-      .chat-group-form__field.clearfix
-        .chat-group-form__field--left
-          .chat-group-form__label
-            = f.label :チャットメンバー
-        .chat-group-form__field--right
-          %ul#added-users
-            %li.chat-group-user
-              .chat-group-user__name= current_user.name
-              %input{type: 'hidden', value: current_user.id}
-      .chat-group-form__field.clearfix
-        .chat-group-form__field--left
-        .chat-group-form__field--right
-          = f.submit "Save", class: 'chat-group-form__action-btn chat-group-form__action-btn--new'
+    = render partial: "form"
