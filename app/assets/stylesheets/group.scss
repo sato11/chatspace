@@ -285,6 +285,10 @@ $textarea_height: 50px;
     .chat-group-form__field--right {
       float: right;
       width: 70%;
+
+      #chat-group-form__checkbox {
+        display: none;
+      }
     }
 
     .chat-group-form__label {
@@ -300,6 +304,50 @@ $textarea_height: 50px;
       line-height: 30px;
       padding: 10px 15px;
       box-sizing: border-box;
+    }
+
+    button#search {
+      display: none;
+    }
+  }
+
+  #user-search-result {
+    @include clearfix();
+    margin-top: 30px;
+
+    #user-search-result__field--left {
+      float: left;
+      width: 30%;
+      padding-right: 20px;
+      padding-left: 20px;
+      box-sizing: border-box;
+    }
+
+    #user-search-result__field--right {
+      float: right;
+      width: 70%;
+
+      #result-field {
+        width: 100%;
+
+        .result-list {
+          @include clearfix();
+          line-height: 30px;
+          padding: 10px 15px;
+          border-bottom: 1px solid #ddd;
+
+          .result-list--left {
+            float: left;
+          }
+
+          .result-list--right {
+            float: right;
+            font-size: 15px;
+            color: $blue;
+            cursor: pointer;
+          }
+        }
+      }
     }
   }
 
