@@ -60,7 +60,6 @@ $(function() {
     var html = addedUserHTML(name, id);
     $('#added-users').append(html);
     $('#user-search-field .chat-group-form__input').val('');
-    $(this).parent().remove();
     // collection_check_boxesの該当ユーザーにチェックを入れる
     $('input[value=' + id + ']').prop("checked", true);
     // 検索結果を初期化する
