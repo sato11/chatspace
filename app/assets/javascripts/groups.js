@@ -63,6 +63,8 @@ $(function() {
     $(this).parent().remove();
     // collection_check_boxesの該当ユーザーにチェックを入れる
     $('input[value=' + id + ']').prop("checked", true);
+    // 検索結果を初期化する
+    $('.result-list').remove();
   });
 
   // 削除ボタンがクリックされた時に該当するユーザーをチャットメンバーから削除する
