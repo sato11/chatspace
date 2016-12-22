@@ -17,9 +17,9 @@ $(function() {
   function getUser(users, input) {
     $.each(users, function(i, user) {
       var name = user.name;
-      if (input == name) {
+      var reg = RegExp("^" + input);
+      if (name.match(reg)) {
         addUserHTML(user);
-        return false;
       }
     });
   }
