@@ -17,15 +17,15 @@ $(function() {
   function getUser(users, input) {
     $.each(users, function(i, user) {
       var name = user.name;
-      if (input == name) {
+      var reg = RegExp("^" + input);
+      if (input.length !== 0 && name.match(reg)) {
         addUserHTML(user);
-        return false;
       }
     });
   }
 
   // ユーザー検索時にjsonと通信する
-  $('#search').on('click', function(e) {
+  $('#user-search-field .chat-group-form__input').on('keyup', function(e) {
     e.preventDefault();
     var textField = $('#user-search-field .chat-group-form__input');
     var input = textField.val();
@@ -33,7 +33,6 @@ $(function() {
       .done(function(data) {
         $('#result-field li').remove();
         getUser(data, input);
-        textField.val('');
       })
       .fail(function() {
         alert('error');
@@ -60,9 +59,11 @@ $(function() {
     var id = $(this).next().attr('value');
     var html = addedUserHTML(name, id);
     $('#added-users').append(html);
-    $(this).parent().remove();
+    $('#user-search-field .chat-group-form__input').val('');
     // collection_check_boxesの該当ユーザーにチェックを入れる
     $('input[value=' + id + ']').prop("checked", true);
+    // 検索結果を初期化する
+    $('.result-list').remove();
   });
 
   // 削除ボタンがクリックされた時に該当するユーザーをチャットメンバーから削除する
