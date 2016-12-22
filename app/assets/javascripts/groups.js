@@ -18,7 +18,7 @@ $(function() {
     $.each(users, function(i, user) {
       var name = user.name;
       var reg = RegExp("^" + input);
-      if (name.match(reg)) {
+      if (input.length !== 0 && name.match(reg)) {
         addUserHTML(user);
       }
     });
