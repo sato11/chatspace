@@ -18,7 +18,7 @@
           = f.hidden_field :group_id, value: @group.id
           = f.text_field :body, placeholder: 'type a message', class: 'footer__message'
           .image-upload
-            %label{for: "file-input"}
+            = f.label :image, for: "file-input" do
               = fa_icon "picture-o"
-            %input{id: "file-input", type: "file"}
+            = f.file_field :image, id: "file-input"
           = f.submit "Send", class: 'send-button'
