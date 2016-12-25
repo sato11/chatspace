@@ -2,4 +2,8 @@
   .message__user
     %span.message__user-name= message.user.name
     %span.message__posted-time= message.created_at
-  .message__content= message.body
+  .message__content
+    = message.body
+    - if message.image?
+      .message__image
+        = image_tag message.image.url
