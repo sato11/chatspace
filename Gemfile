@@ -23,6 +23,10 @@ gem 'devise'                              # Enable user functions
 gem 'carrierwave'                         # Simple and flexible file uploader
 gem 'mini_magick'                         # A ruby wrapper for ImageMagick or GraphicsMagick command line.
 
+# AWS S3 related libraries
+gem 'fog-aws'                             # Module for the 'fog' gem to support Amazon Web Services http://aws.amazon.com/
+gem 'dotenv-rails'                        # Loads environment variables from `.env`.
+
 group :development, :test do
   gem 'byebug', platform: :mri            # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-rails'                         # Call 'binding.pry' anywhere in the code to stop execution and start console
