@@ -24,3 +24,6 @@
 
 # Ignore vendor/bundle
 /vendor/bundle
+
+# Ignore dotenv environemt configuration
+/.env
