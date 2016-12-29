@@ -1,4 +1,8 @@
 $(function() {
+  setInterval(function() {
+    window.location.reload()
+  }, 10000);
+
   // メッセージ毎にhtmlを構築する作業を関数として定義
   // 部分テンプレート_messageの構造に沿う
   function buildHTML(message) {
