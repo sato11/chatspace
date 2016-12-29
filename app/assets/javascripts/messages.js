@@ -1,4 +1,5 @@
 $(function() {
+  // チャット画面において10秒おきに画面を更新する
   if ($('body').attr('controller') == 'messages') {
     setInterval(function() {
       window.location.reload()
