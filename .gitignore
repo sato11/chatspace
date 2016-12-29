@@ -18,3 +18,9 @@
 
 # Ignore coffee.
 .coffee
+
+# Ignore uploaded images.
+/public/uploads/*
+
+# Ignore vendor/bundle
+/vendor/bundle

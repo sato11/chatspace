@@ -19,6 +19,10 @@ gem 'font-awesome-rails'                  # Import font-awesome library
 # User sessions
 gem 'devise'                              # Enable user functions
 
+# Image library and processor
+gem 'carrierwave'                         # Simple and flexible file uploader
+gem 'mini_magick'                         # A ruby wrapper for ImageMagick or GraphicsMagick command line.
+
 group :development, :test do
   gem 'byebug', platform: :mri            # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-rails'                         # Call 'binding.pry' anywhere in the code to stop execution and start console
