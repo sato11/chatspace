@@ -27,13 +27,12 @@ class GroupsController < ApplicationController
   end
 
   def update
-    if create_params[:name].present?
-      if create_params[:user_ids] == [""]
-        params.require(:group)[:user_ids] << current_user.id.to_s
-      end
-      @group.update(create_params)
-      redirect_to :root, notice: 'グループが更新されました' and return
+    if create_params[:user_ids] == [""]
+      params.require(:group)[:user_ids] << current_user.id.to_s
+    end
 
+    if @group.update(create_params)
+      redirect_to :root, notice: 'グループが更新されました' and return
     else
       redirect_to edit_group_path, alert: 'グループが更新されませんでした' and return
     end
