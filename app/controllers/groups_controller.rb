@@ -14,8 +14,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(create_params)
-    @group.users << current_user
-    if @group.name.present? && @group.users.any?
+    if @group.check_member
       @group.save
       redirect_to :root, notice: 'グループが作成されました' and return
     else
