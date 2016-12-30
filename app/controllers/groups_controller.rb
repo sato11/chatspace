@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.new(create_params)
+    @group = Group.new(group_params)
     if @group.check_member
       @group.save
       redirect_to :root, notice: 'グループが作成されました' and return
@@ -27,7 +27,7 @@ class GroupsController < ApplicationController
   end
 
   def update
-    @group = Group.new(create_params)
+    @group = Group.new(group_params)
     if @group.check_member
       @group.update
       redirect_to :root, notice: 'グループが更新されました' and return
@@ -49,7 +49,7 @@ class GroupsController < ApplicationController
     end
   end
 
-  def create_params
+  def group_params
     params.require(:group).permit(:name, user_ids: [])
   end
 end
