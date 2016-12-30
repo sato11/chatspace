@@ -27,9 +27,9 @@ class GroupsController < ApplicationController
   end
 
   def update
-    @group = Group.new(group_params)
-    if @group.check_member
-      @group.update
+    group = Group.new(group_params)
+    if group.check_member
+      @group.update(group_params)
       redirect_to :root, notice: 'グループが更新されました' and return
     else
       redirect_to edit_group_path, alert: 'グループが更新されませんでした' and return
