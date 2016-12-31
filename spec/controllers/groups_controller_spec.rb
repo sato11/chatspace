@@ -45,8 +45,19 @@ describe GroupsController do
         group = attributes_for(:group, user_ids: [])
         group[:user_ids] << user.id.to_s
         expect{
-          post :create, group: { name: group[:name], user_ids: group[:user_ids] }
+          post :create, params: { group: { name: group[:name], user_ids: group[:user_ids] } }
         }.to change(Group, :count).by(1)
+      end
+    end
+
+    context 'when new group has no member' do
+      it 'does not save the new group in the database' do
+        user = create(:user)
+        sign_in user
+        group = attributes_for(:group)
+        expect{
+          post :create, params: { group: { name: group[:name] } }
+        }.not_to change(Group, :count)
       end
     end
   end
