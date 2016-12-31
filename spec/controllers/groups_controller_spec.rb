@@ -39,23 +39,27 @@ describe GroupsController do
 
   describe 'POST #create' do
     context 'when new group has any members' do
-      it 'saves the new group in the database' do
+      before do
         user = create(:user)
         sign_in user
-        group = attributes_for(:group, user_ids: [])
-        group[:user_ids] << user.id.to_s
+        @group = attributes_for(:group, user_ids: [])
+        @group[:user_ids] << user.id.to_s
+      end
+
+      it 'saves the new group in the database' do
         expect{
-          post :create, params: { group: { name: group[:name], user_ids: group[:user_ids] } }
+          post :create, params: { group: { name: @group[:name], user_ids: @group[:user_ids] } }
         }.to change(Group, :count).by(1)
       end
 
       it 'redirects to root path' do
-        user = create(:user)
-        sign_in user
-        group = attributes_for(:group, user_ids: [])
-        group[:user_ids] << user.id.to_s
-        post :create, params: { group: { name: group[:name], user_ids: group[:user_ids] } }
+        post :create, params: { group: { name: @group[:name], user_ids: @group[:user_ids] } }
         expect(response).to redirect_to root_path
+      end
+
+      it 'sets flash[:notice]' do
+        post :create, params: { group: { name: @group[:name], user_ids: @group[:user_ids] } }
+        expect(flash[:notice]).to be_present
       end
     end
 
