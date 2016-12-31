@@ -64,13 +64,21 @@ describe GroupsController do
     end
 
     context 'when new group has no member' do
-      it 'does not save the new group in the database' do
+      before do
         user = create(:user)
         sign_in user
-        group = attributes_for(:group)
+        @group = attributes_for(:group)
+      end
+
+      it 'does not save the new group in the database' do
         expect{
-          post :create, params: { group: { name: group[:name] } }
+          post :create, params: { group: { name: @group[:name] } }
         }.not_to change(Group, :count)
+      end
+
+      it 'redirects to new group path' do
+        post :create, params: { group: { name: @group[:name] } }
+        expect(response).to redirect_to new_group_path
       end
     end
   end
