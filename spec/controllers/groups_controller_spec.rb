@@ -48,6 +48,15 @@ describe GroupsController do
           post :create, params: { group: { name: group[:name], user_ids: group[:user_ids] } }
         }.to change(Group, :count).by(1)
       end
+
+      it 'redirects to root path' do
+        user = create(:user)
+        sign_in user
+        group = attributes_for(:group, user_ids: [])
+        group[:user_ids] << user.id.to_s
+        post :create, params: { group: { name: group[:name], user_ids: group[:user_ids] } }
+        expect(response).to redirect_to root_path
+      end
     end
 
     context 'when new group has no member' do
