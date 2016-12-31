@@ -84,4 +84,12 @@ describe GroupsController do
       end
     end
   end
+
+  describe 'PUT #update' do
+    context 'when edited group has any members' do
+    end
+
+    context 'when edited group has no member' do
+    end
+  end
 end
