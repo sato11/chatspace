@@ -36,4 +36,18 @@ describe GroupsController do
       expect(response).to render_template :edit
     end
   end
+
+  describe 'POST #create' do
+    context 'when new group has any members' do
+      it 'saves the new group in the database' do
+        user = create(:user)
+        sign_in user
+        group = attributes_for(:group, user_ids: [])
+        group[:user_ids] << user.id.to_s
+        expect{
+          post :create, group: { name: group[:name], user_ids: group[:user_ids] }
+        }.to change(Group, :count).by(1)
+      end
+    end
+  end
 end
