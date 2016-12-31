@@ -3,13 +3,15 @@ require 'rails_helper'
 describe GroupsController do
   describe 'GET #index' do
     login_user
-    it "has @groups as an array" do
+    before do
       get :index
+    end
+
+    it "has @groups as an array" do
       expect(assigns(:groups)).to match_array([])
     end
 
     it 'renders the :index template' do
-      get :index
       expect(response).to render_template :index
     end
   end
@@ -24,15 +26,16 @@ describe GroupsController do
 
   describe 'GET #edit' do
     login_user
+    before do
+      @group = create(:group)
+      get :edit, params: { id: @group }
+    end
+
     it 'assigns requested value to @group' do
-      group = create(:group)
-      get :edit, params: { id: group }
-      expect(assigns(:group)).to eq(group)
+      expect(assigns(:group)).to eq(@group)
     end
 
     it 'renders the :edit template' do
-      group = create(:group)
-      get :edit, params: { id: group }
       expect(response).to render_template :edit
     end
   end
@@ -92,15 +95,14 @@ describe GroupsController do
         @group = attributes_for(:group, user_ids: [])
         @group[:user_ids] << @user.id.to_s
         @first_group = create(:group, user_ids: @group[:user_ids])
+        put :update, params: { group: { name: @group[:name], user_ids: @group[:user_ids] }, id: @first_group.id }
       end
 
       it 'redirects to root path' do
-        put :update, params: { group: { name: @group[:name], user_ids: @group[:user_ids] }, id: @first_group.id }
         expect(response).to redirect_to root_path
       end
 
       it 'sets flash[:notice]' do
-        put :update, params: { group: { name: @group[:name], user_ids: @group[:user_ids] }, id: @first_group.id }
         expect(flash[:notice]).to be_present
       end
     end
