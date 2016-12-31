@@ -38,12 +38,11 @@ describe GroupsController do
   end
 
   describe 'POST #create' do
+    login_user
     context 'when new group has any members' do
       before do
-        user = create(:user)
-        sign_in user
         @group = attributes_for(:group, user_ids: [])
-        @group[:user_ids] << user.id.to_s
+        @group[:user_ids] << @user.id.to_s
       end
 
       it 'saves the new group in the database' do
@@ -65,8 +64,6 @@ describe GroupsController do
 
     context 'when new group has no member' do
       before do
-        user = create(:user)
-        sign_in user
         @group = attributes_for(:group)
       end
 
