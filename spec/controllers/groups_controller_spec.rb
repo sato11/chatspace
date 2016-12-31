@@ -79,14 +79,30 @@ describe GroupsController do
       end
 
       it 'sets flash[:alert]' do
-          post :create, params: { group: { name: @group[:name] } }
-          expect(flash[:alert]).to be_present
+        post :create, params: { group: { name: @group[:name] } }
+        expect(flash[:alert]).to be_present
       end
     end
   end
 
   describe 'PUT #update' do
+    login_user
     context 'when edited group has any members' do
+      before do
+        @group = attributes_for(:group, user_ids: [])
+        @group[:user_ids] << @user.id.to_s
+        @first_group = create(:group, user_ids: @group[:user_ids])
+      end
+
+      it 'redirects to root path' do
+        put :update, params: { group: { name: @group[:name], user_ids: @group[:user_ids] }, id: @first_group.id }
+        expect(response).to redirect_to root_path
+      end
+
+      it 'sets flash[:notice]' do
+        put :update, params: { group: { name: @group[:name], user_ids: @group[:user_ids] }, id: @first_group.id }
+        expect(flash[:notice]).to be_present
+      end
     end
 
     context 'when edited group has no member' do
