@@ -80,6 +80,11 @@ describe GroupsController do
         post :create, params: { group: { name: @group[:name] } }
         expect(response).to redirect_to new_group_path
       end
+
+      it 'sets flash[:alert]' do
+          post :create, params: { group: { name: @group[:name] } }
+          expect(flash[:alert]).to be_present
+      end
     end
   end
 end
