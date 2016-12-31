@@ -21,4 +21,13 @@ describe GroupsController do
       expect(response).to render_template :new
     end
   end
+
+  describe 'GET #edit' do
+    login_user
+    it 'assigns requested value to @group' do
+      group = create(:group)
+      get :edit, params: { id: group }
+      expect(assigns(:group)).to eq(group)
+    end
+  end
 end
