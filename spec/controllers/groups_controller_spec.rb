@@ -106,6 +106,19 @@ describe GroupsController do
     end
 
     context 'when edited group has no member' do
+      before do
+        @group = attributes_for(:group)
+        @first_group = create(:group)
+        put :update, params: { group: { name: @group[:name] }, id: @first_group.id }
+      end
+
+      it 'redirects to edit group path' do
+        expect(response).to redirect_to edit_group_path
+      end
+
+      it 'sets flash[:alert]' do
+        expect(flash[:alert]).to be_present
+      end
     end
   end
 end
