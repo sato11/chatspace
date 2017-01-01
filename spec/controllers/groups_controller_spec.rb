@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 describe GroupsController do
+  login_user
+
   describe 'GET #index' do
-    login_user
     before do
       get :index
     end
@@ -17,7 +18,6 @@ describe GroupsController do
   end
 
   describe 'GET #new' do
-    login_user
     it 'renders the :new template' do
       get :new
       expect(response).to render_template :new
@@ -25,7 +25,6 @@ describe GroupsController do
   end
 
   describe 'GET #edit' do
-    login_user
     before do
       @group = create(:group)
       get :edit, params: { id: @group }
@@ -41,7 +40,6 @@ describe GroupsController do
   end
 
   describe 'POST #create' do
-    login_user
     context 'when new group has any members' do
       before do
         @group = attributes_for(:group, user_ids: [])
@@ -89,7 +87,6 @@ describe GroupsController do
   end
 
   describe 'PUT #update' do
-    login_user
     context 'when edited group has any members' do
       before do
         @group = attributes_for(:group, user_ids: [])
