@@ -137,5 +137,13 @@ describe GroupsController do
         expect(response).to redirect_to new_user_session_path
       end
     end
+
+    describe 'GET #edit' do
+      it 'redirects to new user session path' do
+        @group = create(:group)
+        get :edit, params: { id: @group }
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
   end
 end
