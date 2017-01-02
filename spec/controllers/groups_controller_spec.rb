@@ -155,5 +155,16 @@ describe GroupsController do
         expect(response).to redirect_to new_user_session_path
       end
     end
+
+    describe 'PUT #update' do
+      it 'redirects to new user session path' do
+        @user = create(:user)
+        @group = attributes_for(:group, user_ids: [])
+        @group[:user_ids] << @user.id.to_s
+        @first_group = create(:group, user_ids: @group[:user_ids])
+        put :update, params: { group: { name: @group[:name], user_ids: @group[:user_ids] }, id: @first_group.id }
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
   end
 end
