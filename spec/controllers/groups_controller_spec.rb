@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe GroupsController do
   let(:group) { create(:group) }
-  let(:membered_group) { create(:group, { user_ids: @group[:user_ids] }) }
+  let(:membered_group) { create(:group, { user_ids: @group_attrs[:user_ids] }) }
   context 'when user is signed in' do
     login_user
 
@@ -44,45 +44,45 @@ describe GroupsController do
     describe 'POST #create' do
       context 'when new group has any members' do
         before do
-          @group = attributes_for(:group, user_ids: [])
-          @group[:user_ids] << @user.id.to_s
+          @group_attrs = attributes_for(:group, user_ids: [])
+          @group_attrs[:user_ids] << @user.id.to_s
         end
 
         it 'saves the new group in the database' do
           expect{
-            post :create, params: { group: { name: @group[:name], user_ids: @group[:user_ids] } }
+            post :create, params: { group: { name: @group_attrs[:name], user_ids: @group_attrs[:user_ids] } }
           }.to change(Group, :count).by(1)
         end
 
         it 'redirects to root path' do
-          post :create, params: { group: { name: @group[:name], user_ids: @group[:user_ids] } }
+          post :create, params: { group: { name: @group_attrs[:name], user_ids: @group_attrs[:user_ids] } }
           expect(response).to redirect_to root_path
         end
 
         it 'sets flash[:notice]' do
-          post :create, params: { group: { name: @group[:name], user_ids: @group[:user_ids] } }
+          post :create, params: { group: { name: @group_attrs[:name], user_ids: @group_attrs[:user_ids] } }
           expect(flash[:notice]).to be_present
         end
       end
 
       context 'when new group has no member' do
         before do
-          @group = attributes_for(:group)
+          @group_attrs = attributes_for(:group)
         end
 
         it 'does not save the new group in the database' do
           expect{
-            post :create, params: { group: { name: @group[:name] } }
+            post :create, params: { group: { name: @group_attrs[:name] } }
           }.not_to change(Group, :count)
         end
 
         it 'redirects to new group path' do
-          post :create, params: { group: { name: @group[:name] } }
+          post :create, params: { group: { name: @group_attrs[:name] } }
           expect(response).to redirect_to new_group_path
         end
 
         it 'sets flash[:alert]' do
-          post :create, params: { group: { name: @group[:name] } }
+          post :create, params: { group: { name: @group_attrs[:name] } }
           expect(flash[:alert]).to be_present
         end
       end
@@ -91,9 +91,9 @@ describe GroupsController do
     describe 'PUT #update' do
       context 'when edited group has any members' do
         before do
-          @group = attributes_for(:group, user_ids: [])
-          @group[:user_ids] << @user.id.to_s
-          put :update, params: { group: { name: @group[:name], user_ids: @group[:user_ids] }, id: membered_group.id }
+          @group_attrs = attributes_for(:group, user_ids: [])
+          @group_attrs[:user_ids] << @user.id.to_s
+          put :update, params: { group: { name: @group_attrs[:name], user_ids: @group_attrs[:user_ids] }, id: membered_group.id }
         end
 
         it 'redirects to root path' do
@@ -107,8 +107,8 @@ describe GroupsController do
 
       context 'when edited group has no member' do
         before do
-          @group = attributes_for(:group)
-          put :update, params: { group: { name: @group[:name] }, id: group.id }
+          @group_attrs = attributes_for(:group)
+          put :update, params: { group: { name: @group_attrs[:name] }, id: group.id }
         end
 
         it 'redirects to edit group path' do
