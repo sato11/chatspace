@@ -13,4 +13,7 @@ describe Group do
       expect(group).to be_valid
     end
   end
+
+  describe 'check_member' do
+  end
 end
