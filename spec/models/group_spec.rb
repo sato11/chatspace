@@ -1,16 +1,20 @@
 require 'rails_helper'
 describe Group do
   describe '#create' do
-    it 'is invalid without a name' do
-      group = build(:group, name: "")
-      group.valid?
-      expect(group.errors[:name]).to include("を入力してください。")
+    context 'when a group does not have a name' do
+      it 'is invalid' do
+        group = build(:group, name: "")
+        group.valid?
+        expect(group.errors[:name]).to include("を入力してください。")
+      end
     end
 
-    it 'is valid with a name' do
-      group = build(:group)
-      group.valid?
-      expect(group).to be_valid
+    context 'when a group has a name' do
+      it 'is valid' do
+        group = build(:group)
+        group.valid?
+        expect(group).to be_valid
+      end
     end
   end
 
