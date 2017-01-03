@@ -26,13 +26,13 @@ describe GroupsController do
     end
 
     describe 'GET #edit' do
+      let(:group) { create(:group) }
       before do
-        @group = create(:group)
-        get :edit, params: { id: @group }
+        get :edit, params: { id: group }
       end
 
       it 'assigns requested value to @group' do
-        expect(assigns(:group)).to eq(@group)
+        expect(assigns(:group)).to eq(group)
       end
 
       it 'renders the :edit template' do
@@ -89,11 +89,11 @@ describe GroupsController do
 
     describe 'PUT #update' do
       context 'when edited group has any members' do
+        let(:first_group) { create(:group, { user_ids: @group[:user_ids] }) }
         before do
           @group = attributes_for(:group, user_ids: [])
           @group[:user_ids] << @user.id.to_s
-          @first_group = create(:group, user_ids: @group[:user_ids])
-          put :update, params: { group: { name: @group[:name], user_ids: @group[:user_ids] }, id: @first_group.id }
+          put :update, params: { group: { name: @group[:name], user_ids: @group[:user_ids] }, id: first_group.id }
         end
 
         it 'redirects to root path' do
@@ -106,10 +106,10 @@ describe GroupsController do
       end
 
       context 'when edited group has no member' do
+        let(:first_group) { create(:group) }
         before do
           @group = attributes_for(:group)
-          @first_group = create(:group)
-          put :update, params: { group: { name: @group[:name] }, id: @first_group.id }
+          put :update, params: { group: { name: @group[:name] }, id: first_group.id }
         end
 
         it 'redirects to edit group path' do
@@ -139,9 +139,9 @@ describe GroupsController do
     end
 
     describe 'GET #edit' do
+      let(:group) { create(:group) }
       it 'redirects to new user session path' do
-        @group = create(:group)
-        get :edit, params: { id: @group }
+        get :edit, params: { id: group }
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -154,9 +154,9 @@ describe GroupsController do
     end
 
     describe 'PUT #update' do
+      let(:group) { create(:group) }
       it 'redirects to new user session path' do
-        @group = create(:group)
-        put :update, params: { id: @group }
+        put :update, params: { id: group }
         expect(response).to redirect_to new_user_session_path
       end
     end
