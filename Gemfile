@@ -30,6 +30,7 @@ gem 'dotenv-rails'                        # Loads environment variables from `.e
 group :development, :test do
   gem 'byebug', platform: :mri            # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-rails'                         # Call 'binding.pry' anywhere in the code to stop execution and start console
+  gem 'rails-controller-testing'          # Brings back `assigns` and `assert_template` to your Rails tests https://github.com/rails/rails-controller-testing
 end
 
 group :development do
