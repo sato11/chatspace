@@ -6,5 +6,11 @@ describe Group do
       group.valid?
       expect(group.errors[:name]).to include("を入力してください。")
     end
+
+    it 'is valid with a name' do
+      group = build(:group)
+      group.valid?
+      expect(group).to be_valid
+    end
   end
 end
