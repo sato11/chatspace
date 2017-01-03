@@ -123,38 +123,39 @@ describe GroupsController do
   end
 
   context 'when user is not signed in' do
+    subject { response }
     describe 'GET #index' do
       it 'redirects to new user session path' do
         get :index
-        expect(response).to redirect_to new_user_session_path
+        is_expected.to redirect_to new_user_session_path
       end
     end
 
     describe 'GET #new' do
       it 'redirects to new user session path' do
         get :new
-        expect(response).to redirect_to new_user_session_path
+        is_expected.to redirect_to new_user_session_path
       end
     end
 
     describe 'GET #edit' do
       it 'redirects to new user session path' do
         get :edit, params: { id: group }
-        expect(response).to redirect_to new_user_session_path
+        is_expected.to redirect_to new_user_session_path
       end
     end
 
     describe 'POST #create' do
       it 'redirects to new user session path' do
         post :create
-        expect(response).to redirect_to new_user_session_path
+        is_expected.to redirect_to new_user_session_path
       end
     end
 
     describe 'PUT #update' do
       it 'redirects to new user session path' do
         put :update, params: { id: group }
-        expect(response).to redirect_to new_user_session_path
+        is_expected.to redirect_to new_user_session_path
       end
     end
   end
