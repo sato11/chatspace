@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe GroupsController do
+  let(:group) { create(:group) }
+  let(:membered_group) { create(:group, { user_ids: @group[:user_ids] }) }
   context 'when user is signed in' do
     login_user
 
@@ -26,7 +28,6 @@ describe GroupsController do
     end
 
     describe 'GET #edit' do
-      let(:group) { create(:group) }
       before do
         get :edit, params: { id: group }
       end
@@ -89,11 +90,10 @@ describe GroupsController do
 
     describe 'PUT #update' do
       context 'when edited group has any members' do
-        let(:first_group) { create(:group, { user_ids: @group[:user_ids] }) }
         before do
           @group = attributes_for(:group, user_ids: [])
           @group[:user_ids] << @user.id.to_s
-          put :update, params: { group: { name: @group[:name], user_ids: @group[:user_ids] }, id: first_group.id }
+          put :update, params: { group: { name: @group[:name], user_ids: @group[:user_ids] }, id: membered_group.id }
         end
 
         it 'redirects to root path' do
@@ -106,10 +106,9 @@ describe GroupsController do
       end
 
       context 'when edited group has no member' do
-        let(:first_group) { create(:group) }
         before do
           @group = attributes_for(:group)
-          put :update, params: { group: { name: @group[:name] }, id: first_group.id }
+          put :update, params: { group: { name: @group[:name] }, id: group.id }
         end
 
         it 'redirects to edit group path' do
@@ -139,7 +138,6 @@ describe GroupsController do
     end
 
     describe 'GET #edit' do
-      let(:group) { create(:group) }
       it 'redirects to new user session path' do
         get :edit, params: { id: group }
         expect(response).to redirect_to new_user_session_path
@@ -154,7 +152,6 @@ describe GroupsController do
     end
 
     describe 'PUT #update' do
-      let(:group) { create(:group) }
       it 'redirects to new user session path' do
         put :update, params: { id: group }
         expect(response).to redirect_to new_user_session_path
