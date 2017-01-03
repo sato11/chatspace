@@ -15,5 +15,10 @@ describe Group do
   end
 
   describe 'check_member' do
+    context 'when the group has any member' do
+    end
+
+    context 'when the group has no member' do
+    end
   end
 end
