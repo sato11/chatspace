@@ -10,6 +10,10 @@ describe MessagesController do
         get :index, params: { group_id: group }
       end
 
+      it 'assigns requested value to @group' do
+        expect(assigns(:group)).to eq group
+      end
+
       it 'has @groups as an array' do
         expect(assigns(:groups)).to match_array []
       end
