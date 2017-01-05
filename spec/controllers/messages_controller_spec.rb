@@ -66,12 +66,20 @@ describe MessagesController do
       end
 
       context 'when message is not saved' do
-        it 'does not save the new message in the database' do
-          message = attributes_for(:message)
+        before do
+          @message = attributes_for(:message)
           group.name = nil
+        end
+
+        it 'does not save the new message in the database' do
           expect{
-            post :create, params: { group_id: group, message: message }
+            post :create, params: { group_id: group, message: @message }
           }.not_to change(Group, :count)
+        end
+
+        it 'redirects to group_messages_path' do
+          post :create, params: { group_id: group, message: @message }
+          expect(response).to redirect_to group_messages_path
         end
       end
     end
