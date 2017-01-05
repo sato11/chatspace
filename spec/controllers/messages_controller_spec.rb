@@ -33,6 +33,11 @@ describe MessagesController do
 
     describe 'POST #create' do
       context 'when message is saved' do
+        context 'when html is requested' do
+        end
+
+        context 'when json is requested' do
+        end
       end
 
       context 'when message is not saved' do
