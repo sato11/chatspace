@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe MessagesController do
+  let(:group) { create(:group) }
   context 'when user is signed in' do
     login_user
-    let(:group) { create(:group) }
 
     describe 'GET #index' do
       before do
@@ -72,10 +72,19 @@ describe MessagesController do
   end
 
   context 'when user is not signed in' do
+    subject { response }
     describe 'GET #index' do
+      it 'redirects to new user session path' do
+        get :index, params: { group_id: group }
+        is_expected.to redirect_to new_user_session_path
+      end
     end
 
     describe 'POST #create' do
+      it 'redirects to new user session path' do
+        post :create, params: { group_id: group }
+        is_expected.to redirect_to new_user_session_path
+      end
     end
   end
 end
