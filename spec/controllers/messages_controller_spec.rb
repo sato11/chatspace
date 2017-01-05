@@ -6,9 +6,16 @@ describe MessagesController do
     let(:group) { create(:group) }
 
     describe 'GET #index' do
-      it 'has @groups as an array' do
+      before do
         get :index, params: { group_id: group }
+      end
+
+      it 'has @groups as an array' do
         expect(assigns(:groups)).to match_array []
+      end
+
+      it 'has @members as an array' do
+        expect(assigns(:messages)).to match_array []
       end
     end
 
