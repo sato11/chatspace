@@ -44,6 +44,11 @@ describe MessagesController do
             post :create, params: { group_id: group, message: attributes_for(:message) }
             expect(response).to redirect_to group_messages_path
           end
+
+          it 'sets flash[:notice]' do
+            post :create, params: { group_id: group, message: attributes_for(:message) }
+            expect(flash[:notice]).to be_present
+          end
         end
 
         context 'when json is requested' do
