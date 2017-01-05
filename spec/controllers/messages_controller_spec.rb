@@ -32,6 +32,11 @@ describe MessagesController do
     end
 
     describe 'POST #create' do
+      context 'when message is saved' do
+      end
+
+      context 'when message is not saved' do
+      end
     end
   end
 
