@@ -19,6 +19,10 @@ describe MessagesController do
       end
 
       it 'has @members as an array' do
+        expect(assigns(:members)).to match_array []
+      end
+
+      it 'has @messages as an array' do
         expect(assigns(:messages)).to match_array []
       end
     end
