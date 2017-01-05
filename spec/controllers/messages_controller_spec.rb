@@ -52,6 +52,11 @@ describe MessagesController do
               post :create, params: { group_id: group, message: attributes_for(:message), format: :json }
             }.to change(Message, :count).by(1)
           end
+
+          it 'does not render template' do
+            post :create, params: { group_id: group, message: attributes_for(:message), format: :json }
+            expect(@template).to be_nil
+          end
         end
       end
 
