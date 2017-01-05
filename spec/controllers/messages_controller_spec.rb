@@ -36,17 +36,22 @@ describe MessagesController do
         context 'when html is requested' do
           it 'saves the new message in the database' do
             expect{
-              post :create,params: { group_id: group, message: attributes_for(:message) }
+              post :create, params: { group_id: group, message: attributes_for(:message) }
             }.to change(Message, :count).by(1)
           end
 
           it 'redirects to group_messages_path' do
-            post :create,params: { group_id: group, message: attributes_for(:message) }
+            post :create, params: { group_id: group, message: attributes_for(:message) }
             expect(response).to redirect_to group_messages_path
           end
         end
 
         context 'when json is requested' do
+          it 'saves the new message in the database' do
+            expect{
+              post :create, params: { group_id: group, message: attributes_for(:message), format: :json }
+            }.to change(Message, :count).by(1)
+          end
         end
       end
 
