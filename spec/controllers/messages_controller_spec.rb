@@ -39,6 +39,11 @@ describe MessagesController do
               post :create,params: { group_id: group, message: attributes_for(:message) }
             }.to change(Message, :count).by(1)
           end
+
+          it 'redirects to group_messages_path' do
+            post :create,params: { group_id: group, message: attributes_for(:message) }
+            expect(response).to redirect_to group_messages_path
+          end
         end
 
         context 'when json is requested' do
