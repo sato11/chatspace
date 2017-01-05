@@ -25,6 +25,10 @@ describe MessagesController do
       it 'has @messages as an array' do
         expect(assigns(:messages)).to match_array []
       end
+
+      it 'renders the :index template' do
+        expect(response).to render_template :index
+      end
     end
 
     describe 'POST #create' do
