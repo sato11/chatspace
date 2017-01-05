@@ -34,6 +34,11 @@ describe MessagesController do
     describe 'POST #create' do
       context 'when message is saved' do
         context 'when html is requested' do
+          it 'saves the new message in the database' do
+            expect{
+              post :create,params: { group_id: group, message: attributes_for(:message) }
+            }.to change(Message, :count).by(1)
+          end
         end
 
         context 'when json is requested' do
