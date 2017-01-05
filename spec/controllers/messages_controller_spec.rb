@@ -66,6 +66,13 @@ describe MessagesController do
       end
 
       context 'when message is not saved' do
+        it 'does not save the new message in the database' do
+          message = attributes_for(:message)
+          group.name = nil
+          expect{
+            post :create, params: { group_id: group, message: message }
+          }.not_to change(Group, :count)
+        end
       end
     end
   end
