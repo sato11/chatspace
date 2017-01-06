@@ -66,7 +66,21 @@ describe MessagesController do
       end
 
       context 'when message is not saved' do
-        # message is always saved as there is no validation
+        it 'does not save the new message in the database' do
+          expect{
+            post :create, params: { group_id: group, message: { body: '', image: '' } }
+            }.not_to change(Message, :count)
+        end
+
+        it 'redirects to group_messages_path' do
+          post :create, params: { group_id: group, message: { body: '', image: '' } }
+          expect(response).to redirect_to group_messages_path
+        end
+
+        it 'sets flash[:alert]' do
+          post :create, params: { group_id: group, message: { body: '', image: '' } }
+          expect(flash[:alert]).to be_present
+        end
       end
     end
   end
