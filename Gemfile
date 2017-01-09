@@ -45,3 +45,7 @@ group :test do
   gem 'factory_girl_rails'                # Build sample instance for rspec
   gem 'faker'                             # Generate random data as a tentative instance
 end
+
+group :production do
+  gem 'unicorn'                           # Rack HTTP server for fast clients and Unix
+end
