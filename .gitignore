@@ -27,6 +27,3 @@
 
 # Ignore dotenv environemt configuration
 /.env
-
-# Ignore public/assets
-/public/assets
