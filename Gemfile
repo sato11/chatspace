@@ -31,6 +31,13 @@ group :development, :test do
   gem 'byebug', platform: :mri            # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-rails'                         # Call 'binding.pry' anywhere in the code to stop execution and start console
   gem 'rails-controller-testing'          # Brings back `assigns` and `assert_template` to your Rails tests https://github.com/rails/rails-controller-testing
+
+  # capistrano
+  gem 'capistrano'                        # Remote multi-server automation tool http://www.capistranorb.com
+  gem 'capistrano-rbenv'                  # Idiomatic rbenv support for Capistrano 3.x
+  gem 'capistrano-bundler'                # Bundler support for Capistrano 3.x
+  gem 'capistrano-rails'                  # Official Ruby on Rails specific tasks for Capistrano http://www.capistranorb.com/
+  gem 'capistrano3-unicorn'               # Capistrano v3 plugin that integrates Unicorn tasks into capistrano deployment scripts
 end
 
 group :development do
