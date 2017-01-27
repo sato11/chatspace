@@ -1,11 +1,7 @@
 class MessagesController < ApplicationController
-  before_action :set_group
+  before_action :set_variables
 
   def index
-    @groups = current_user.groups
-    @members = @group.group_members
-    @message = Message.new
-    @messages = Message.includes(:user).where(group_id: @group.id)
   end
 
   def create
@@ -16,13 +12,18 @@ class MessagesController < ApplicationController
         format.json { render json: message }
       end
     else
-      redirect_to group_messages_path, alert: 'メッセージが投稿されませんでした' and return
+      flash[:alert] = 'メッセージが投稿されませんでした'
+      render action: :index
     end
   end
 
   private
-  def set_group
+  def set_variables
     @group = Group.find(params[:group_id])
+    @groups = current_user.groups
+    @members = @group.group_members
+    @message = Message.new
+    @messages = Message.includes(:user).where(group_id: @group.id)
   end
 
   def create_params
