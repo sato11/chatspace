@@ -22,7 +22,6 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @members = @group.users
   end
 
   def update
@@ -31,13 +30,15 @@ class GroupsController < ApplicationController
       @group.update(group_params)
       redirect_to :root, notice: 'グループが更新されました' and return
     else
-      redirect_to edit_group_path, alert: 'グループが更新されませんでした' and return
+      flash[:alert] = 'グループが更新されませんでした'
+      render action: :edit
     end
   end
 
   private
   def set_group
     @group = Group.find(params[:id])
+    @members = @group.users
   end
 
   def set_members
