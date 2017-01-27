@@ -35,6 +35,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show
+    redirect_to edit_group_path
+  end
+
   private
   def set_group
     @group = Group.find(params[:id])
