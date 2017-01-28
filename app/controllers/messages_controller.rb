@@ -17,6 +17,7 @@ class MessagesController < ApplicationController
   end
 
   private
+
   def set_variables
     @group = Group.find(params[:group_id])
     @groups = current_user.groups
