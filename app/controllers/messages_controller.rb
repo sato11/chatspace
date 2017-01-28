@@ -1,8 +1,7 @@
 class MessagesController < ApplicationController
   before_action :set_variables
 
-  def index
-  end
+  def index; end
 
   def create
     message = Message.new(create_params)
