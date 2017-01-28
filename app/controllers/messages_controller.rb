@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
         format.json { render json: message }
       end
     else
-      flash[:alert] = 'メッセージが投稿されませんでした'
+      flash.now[:alert] = 'メッセージが投稿されませんでした'
       render action: :index
     end
   end
