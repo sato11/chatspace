@@ -15,7 +15,7 @@ class GroupsController < ApplicationController
       @group.save
       redirect_to :root, notice: 'グループが作成されました' and return
     else
-      flash[:alert] = 'グループが作成されませんでした'
+      flash.now[:alert] = 'グループが作成されませんでした'
       render action: :new
     end
   end
@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
       @group.update(group_params)
       redirect_to :root, notice: 'グループが更新されました' and return
     else
-      flash[:alert] = 'グループが更新されませんでした'
+      flash.now[:alert] = 'グループが更新されませんでした'
       render action: :edit
     end
   end
