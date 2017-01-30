@@ -111,8 +111,8 @@ describe GroupsController do
           put :update, params: { group: { name: @group_attrs[:name] }, id: group.id }
         end
 
-        it 'redirects to edit group path' do
-          expect(response).to redirect_to edit_group_path
+        it 'renders the :edit template' do
+          expect(response).to render_template :edit
         end
 
         it 'sets flash[:alert]' do
