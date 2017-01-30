@@ -76,9 +76,9 @@ describe GroupsController do
           }.not_to change(Group, :count)
         end
 
-        it 'redirects to new group path' do
+        it 'renders the :new template' do
           post :create, params: { group: { name: @group_attrs[:name] } }
-          expect(response).to redirect_to new_group_path
+          expect(response).to render_template :new
         end
 
         it 'sets flash[:alert]' do
