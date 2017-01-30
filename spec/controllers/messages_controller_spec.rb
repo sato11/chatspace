@@ -72,9 +72,9 @@ describe MessagesController do
             }.not_to change(Message, :count)
         end
 
-        it 'redirects to group_messages_path' do
+        it 'renders the :index template' do
           post :create, params: { group_id: group, message: { body: '', image: '' } }
-          expect(response).to redirect_to group_messages_path
+          expect(response).to render_template :index
         end
 
         it 'sets flash[:alert]' do
