@@ -50,6 +50,7 @@ $(function() {
     })
     .fail(function() {
       alert('error');
+      $('input[type="submit"]').prop('disabled', false);
     })
   });
 });

@@ -1,16 +1,13 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
   before_action :pass_users_to_json, only: [:new, :edit]
+  before_action :set_members, only: [:new, :create]
 
   def index
     @groups = current_user.groups
   end
 
-  def new
-    @group = Group.new
-    @group.users << current_user
-    @members = @group.users
-  end
+  def new; end
 
   def create
     @group = Group.new(group_params)
@@ -18,13 +15,12 @@ class GroupsController < ApplicationController
       @group.save
       redirect_to :root, notice: 'グループが作成されました' and return
     else
-      redirect_to new_group_path, alert: 'グループが作成されませんでした' and return
+      flash.now[:alert] = 'グループが作成されませんでした'
+      render action: :new
     end
   end
 
-  def edit
-    @members = @group.users
-  end
+  def edit; end
 
   def update
     group = Group.new(group_params)
@@ -32,13 +28,26 @@ class GroupsController < ApplicationController
       @group.update(group_params)
       redirect_to :root, notice: 'グループが更新されました' and return
     else
-      redirect_to edit_group_path, alert: 'グループが更新されませんでした' and return
+      flash.now[:alert] = 'グループが更新されませんでした'
+      render action: :edit
     end
   end
 
+  def show
+    redirect_to edit_group_path
+  end
+
   private
+
   def set_group
     @group = Group.find(params[:id])
+    @members = @group.users
+  end
+
+  def set_members
+    @group = Group.new
+    @group.users << current_user
+    @members = @group.users
   end
 
   def pass_users_to_json
