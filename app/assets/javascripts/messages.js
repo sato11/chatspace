@@ -15,7 +15,7 @@ $(function() {
                     '<span class="message__user-name">' +
                       user +
                     '</span>' +
-                    '<span class="message__posted-time">' +
+                    '<span class="message__posted-time"> ' +
                       message.created_at +
                     '</span>' +
                   '<div class="message__content">' +
