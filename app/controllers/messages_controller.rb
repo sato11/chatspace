@@ -4,11 +4,11 @@ class MessagesController < ApplicationController
   def index; end
 
   def create
-    message = Message.new(create_params)
-    if message.save
+    @message = Message.new(create_params)
+    if @message.save
       respond_to do |format|
         format.html { redirect_to group_messages_path, notice: 'メッセージが投稿されました' }
-        format.json { render json: message }
+        format.json
       end
     else
       flash.now[:alert] = 'メッセージが投稿されませんでした'
