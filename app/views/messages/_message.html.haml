@@ -1,7 +1,7 @@
 %li.message
   .message__user
     %span.message__user-name= message.user.name
-    %span.message__posted-time= message.created_at
+    %span.message__posted-time= message.time
   .message__content
     = message.body
     - if message.image?

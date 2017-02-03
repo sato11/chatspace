@@ -6,6 +6,10 @@ class Message < ApplicationRecord
 
   validate :body_or_image
 
+  def time
+    self.created_at.strftime('%F %T')
+  end
+
   private
   def body_or_image
     errors.add(:message, 'メッセージが投稿されませんでした') unless body? || image?
