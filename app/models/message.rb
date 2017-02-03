@@ -11,6 +11,7 @@ class Message < ApplicationRecord
   end
 
   private
+
   def body_or_image
     errors.add(:message, 'メッセージが投稿されませんでした') unless body? || image?
   end
