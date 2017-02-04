@@ -43,7 +43,7 @@ $(function() {
     var message = $('.footer__message').val();
     var file = $('input[type=file]')[0].files[0];
     fd.append("body", message);
-    if (imageChecker !== 0) { fd.append("image", file) };
+    fd.append("image", file);
 
     return fd;
   }
