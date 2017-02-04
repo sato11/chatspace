@@ -53,7 +53,7 @@ $(function() {
     $('input[type="submit"]').prop('disabled', false);
   }
 
-  // 画像の選択を解除する
+  // 引数で渡されたフォームの選択を解除する
   function resetInput(e) {
     e.wrap('<form>').closest('form').get(0).reset();
     e.unwrap();
