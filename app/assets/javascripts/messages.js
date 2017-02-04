@@ -72,7 +72,7 @@ $(function() {
     })
     .done(function(data) {
       $('.messages').append(buildHTML(data));
-      $('#message_body').val('');
+      resetInput($('#message_body'));
       window.scrollTo(0, document.body.scrollHeight);
       enableSubmitButton();
     })
