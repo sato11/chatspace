@@ -26,10 +26,14 @@ $(function() {
                   '<div class="message__content">' +
                     message.body +
                   '</div>' +
-                  '<div class="message__image">' +
-                    '<img src="' + message.image + '">' +
-                  '</div>' +
                 '</li>');
+    if (imageChecker !== 0) {
+      html.append(
+        '<div class="message__image">' +
+          '<img src="' + message.image + '">' +
+        '</div>'
+      );
+    }
     return html;
   }
 
@@ -57,6 +61,7 @@ $(function() {
 
   // 画像は選択されると自動的に送信される
   fileInput.on('change', function() {
+    imageChecker = 1; // 一時的に変数を書き換えてバリデーションを通す
     messageForm.trigger('submit');
     resetInput($(this));
   });
@@ -81,6 +86,7 @@ $(function() {
         resetInput($('#message_body'));
         window.scrollTo(0, document.body.scrollHeight);
         enableSubmitButton();
+        imageChecker = $('input[type=file]')[0].files.length; // 変数を初期化する
       })
       .fail(function() {
         alert('error');
