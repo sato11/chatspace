@@ -16,18 +16,20 @@ $(function() {
   // 部分テンプレート_messageの構造に沿う
   function buildHTML(message) {
     var user = $('.sidebar__top-left').html();
-    var html = $('<li class="message">' +
-                  '<div class="message__user">' +
-                    '<span class="message__user-name">' +
-                      user +
-                    '</span>' +
-                    '<span class="message__posted-time"> ' +
-                      message.time +
-                    '</span>' +
-                  '<div class="message__content">' +
-                    message.body +
-                  '</div>' +
-                '</li>');
+    var html = $(
+      '<li class="message">' +
+        '<div class="message__user">' +
+          '<span class="message__user-name">' +
+            user +
+          '</span>' +
+          '<span class="message__posted-time"> ' +
+            message.time +
+          '</span>' +
+        '<div class="message__content">' +
+          message.body +
+        '</div>' +
+      '</li>'
+    );
     // 画像が送信された時にのみ画像表示テンプレートを当てる
     if (imageChecker !== 0) {
       html.append(
