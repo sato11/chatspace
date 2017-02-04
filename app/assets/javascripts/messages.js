@@ -31,14 +31,14 @@ $(function() {
   }
 
   // formDataの形式を整える
-  function buildFormData(form) {
-    var formData = new FormData(form.get(0));
+  function buildFormData(f) {
+    var fd = new FormData(f.get(0));
     var message = $('.footer__message').val();
     var file = $('input[type=file]')[0].files[0];
-    formData.append("body", message);
-    formData.append("image", file);
+    fd.append("body", message);
+    fd.append("image", file);
 
-    return formData;
+    return fd;
   }
 
   // submit時にjsonで非同期通信を行う
