@@ -23,6 +23,9 @@ $(function() {
                   '<div class="message__content">' +
                     message.body +
                   '</div>' +
+                  '<div class="message__image">' +
+                    '<img src="' + message.image + '">' +
+                  '</div>' +
                 '</li>');
     return html;
   }
