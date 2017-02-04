@@ -15,7 +15,7 @@ $(function() {
   // 部分テンプレート_messageの構造に沿う
   function buildHTML(message) {
     var user = $('.sidebar__top-left').html();
-    var html = $('<li class="message">').append(
+    var html = $('<li class="message">' +
                   '<div class="message__user">' +
                     '<span class="message__user-name">' +
                       user +
