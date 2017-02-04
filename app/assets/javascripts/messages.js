@@ -41,6 +41,10 @@ $(function() {
     return fd;
   }
 
+  function enableSubmitButton() {
+    $('input[type="submit"]').prop('disabled', false);
+  }
+
   // submit時にjsonで非同期通信を行う
   messageForm.on('submit', function(e) {
     e.preventDefault();
@@ -56,11 +60,11 @@ $(function() {
       $('.messages').append(buildHTML(data));
       $('#message_body').val('');
       window.scrollTo(0, document.body.scrollHeight);
-      $('input[type="submit"]').prop('disabled', false);
+      enableSubmitButton();
     })
     .fail(function() {
       alert('error');
-      $('input[type="submit"]').prop('disabled', false);
+      enableSubmitButton();
     })
   });
 });
