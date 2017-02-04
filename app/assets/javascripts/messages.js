@@ -1,5 +1,6 @@
 $(function() {
   var messageForm = $('#new_message');
+  var fileInput = $('#file-input');
 
   // チャット画面において10秒おきに画面を更新する
   if ($('body').attr('controller') == 'messages') {
@@ -41,9 +42,22 @@ $(function() {
     return fd;
   }
 
+  // ajax通信時に送信ボタンがフリーズするのを解消する
   function enableSubmitButton() {
     $('input[type="submit"]').prop('disabled', false);
   }
+
+  // 画像の選択を解除する
+  function resetInput(e) {
+    e.wrap('<form>').closest('form').get(0).reset();
+    e.unwrap();
+  }
+
+  // 画像は選択されると自動的に送信される
+  fileInput.on('change', function() {
+    messageForm.trigger('submit');
+    resetInput($(this));
+  });
 
   // submit時にjsonで非同期通信を行う
   messageForm.on('submit', function(e) {
