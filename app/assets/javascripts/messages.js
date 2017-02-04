@@ -1,4 +1,5 @@
 $(function() {
+  // 変数の定義
   var messageForm = $('#new_message');
   var fileInput = $('#file-input');
   var textField = $('#message_body');
@@ -27,6 +28,7 @@ $(function() {
                     message.body +
                   '</div>' +
                 '</li>');
+    // 画像が送信された時にのみ画像表示テンプレートを当てる
     if (imageChecker !== 0) {
       html.append(
         '<div class="message__image">' +
