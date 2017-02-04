@@ -1,4 +1,6 @@
 $(function() {
+  var messageForm = $('#new_message');
+
   // チャット画面において10秒おきに画面を更新する
   if ($('body').attr('controller') == 'messages') {
     setInterval(function() {
@@ -25,27 +27,32 @@ $(function() {
     return html;
   }
 
+  // formDataの形式を整える
+  function buildFormData(form) {
+    var formData = new FormData(form.get(0));
+    var message = $('.footer__message').val();
+    var file = $('input[type=file]')[0].files[0];
+    formData.append("body", message);
+    formData.append("image", file);
+
+    return formData;
+  }
+
   // submit時にjsonで非同期通信を行う
-  $('#message-form form').on('submit', function(e) {
+  messageForm.on('submit', function(e) {
     e.preventDefault();
-    var textField = $('.footer__message');
-    var message = textField.val();
-    var groupId = $('form.new_message input#message_group_id').attr('value');
+    var formData = buildFormData(messageForm);
     $.ajax({
       type: 'POST',
-      url: '/groups/' + groupId + '/messages.json',
-      data: {
-        message: {
-          body: message
-        }
-      },
-      datatype: 'json'
+      url: './messages.json',
+      data: formData,
+      processData: false,
+      contentType: false
     })
     .done(function(data) {
-      var html = buildHTML(data);
-      $('.messages').append(html);
+      $('.messages').append(buildHTML(data));
+      $('#message_body').val('');
       window.scrollTo(0, document.body.scrollHeight);
-      textField.val('');
       $('input[type="submit"]').prop('disabled', false);
     })
     .fail(function() {
