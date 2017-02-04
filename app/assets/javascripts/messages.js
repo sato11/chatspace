@@ -89,7 +89,7 @@ $(function() {
         imageChecker = $('input[type=file]')[0].files.length; // 変数を初期化する
       })
       .fail(function() {
-        alert('error');
+        alert('error communicating');
         enableSubmitButton();
       })
     };
