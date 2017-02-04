@@ -1,6 +1,8 @@
 $(function() {
   var messageForm = $('#new_message');
   var fileInput = $('#file-input');
+  var textField = $('#message_body');
+  var imageChecker = $('input[type=file]')[0].files.length;
 
   // チャット画面において10秒おきに画面を更新する
   if ($('body').attr('controller') == 'messages') {
@@ -37,7 +39,7 @@ $(function() {
     var message = $('.footer__message').val();
     var file = $('input[type=file]')[0].files[0];
     fd.append("body", message);
-    fd.append("image", file);
+    if (imageChecker !== 0) { fd.append("image", file) };
 
     return fd;
   }
@@ -62,23 +64,28 @@ $(function() {
   // submit時にjsonで非同期通信を行う
   messageForm.on('submit', function(e) {
     e.preventDefault();
-    var formData = buildFormData(messageForm);
-    $.ajax({
-      type: 'POST',
-      url: './messages.json',
-      data: formData,
-      processData: false,
-      contentType: false
-    })
-    .done(function(data) {
-      $('.messages').append(buildHTML(data));
-      resetInput($('#message_body'));
-      window.scrollTo(0, document.body.scrollHeight);
-      enableSubmitButton();
-    })
-    .fail(function() {
-      alert('error');
-      enableSubmitButton();
-    })
+    // テキストと画像の両方が空の際は処理に進まないバリデーション
+    if ( !textField.val() && imageChecker === 0 ) {
+      alert('either text or image is required');
+    } else {
+      var formData = buildFormData( $(this) );
+      $.ajax({
+        type: 'POST',
+        url: './messages.json',
+        data: formData,
+        processData: false,
+        contentType: false
+      })
+      .done(function(data) {
+        $('.messages').append(buildHTML(data));
+        resetInput($('#message_body'));
+        window.scrollTo(0, document.body.scrollHeight);
+        enableSubmitButton();
+      })
+      .fail(function() {
+        alert('error');
+        enableSubmitButton();
+      })
+    };
   });
 });
