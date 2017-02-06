@@ -52,11 +52,6 @@ $(function() {
     return fd;
   }
 
-  // ajax通信時に送信ボタンがフリーズするのを解消する
-  function enableSubmitButton() {
-    $('input[type="submit"]').prop('disabled', false);
-  }
-
   // 引数で渡されたフォームの選択を解除する
   function resetInput(e) {
     e.wrap('<form>').closest('form').get(0).reset();
@@ -89,13 +84,12 @@ $(function() {
         $('.messages').append(buildHTML(data));
         resetInput($('#message_body'));
         window.scrollTo(0, document.body.scrollHeight);
-        enableSubmitButton();
         imageChecker = $('input[type=file]')[0].files.length; // 変数を初期化する
       })
       .fail(function() {
         alert('error communicating');
-        enableSubmitButton();
       })
+      return false;
     };
   });
 });
