@@ -10,4 +10,4 @@
         =link_to(group_messages_path(group)) do
           %li.group
             .group__title= group.name
-            .group__content= group.latest_message
+            .group__content= show_latest_content(group.messages.last) if group.messages.any?

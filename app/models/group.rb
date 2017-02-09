@@ -8,8 +8,4 @@ class Group < ApplicationRecord
   def check_member
     users.any?
   end
-
-  def latest_message
-    messages.last ? messages.last.show_body_or_image : 'まだメッセージはありません'
-  end
 end
