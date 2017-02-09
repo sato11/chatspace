@@ -7,7 +7,7 @@ class Message < ApplicationRecord
   validate :body_or_image
 
   def time
-    self.created_at.strftime('%F %T')
+    created_at.strftime('%F %T')
   end
 
   def show_body_or_image

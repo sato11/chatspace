@@ -6,10 +6,10 @@ class Group < ApplicationRecord
   validates :name, presence: true
 
   def check_member
-    self.users.any?
+    users.any?
   end
 
   def latest_message
-    self.messages.last ? self.messages.last.show_body_or_image : 'まだメッセージはありません'
+    messages.last ? messages.last.show_body_or_image : 'まだメッセージはありません'
   end
 end
