@@ -22,8 +22,9 @@
 # Ignore uploaded images.
 /public/uploads/*
 
-# Ignore vendor/bundle
+# Ignore vendor/bundle and vendor/bundler
 /vendor/bundle
+/vendor/bundler
 
 # Ignore dotenv environemt configuration
 /.env
