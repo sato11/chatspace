@@ -10,6 +10,6 @@ class Group < ApplicationRecord
   end
 
   def latest_message
-    self.messages.last ? self.messages.last.body : 'まだメッセージはありません'
+    self.messages.last ? self.messages.last.show_body_or_image : 'まだメッセージはありません'
   end
 end

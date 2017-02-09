@@ -10,6 +10,10 @@ class Message < ApplicationRecord
     self.created_at.strftime('%F %T')
   end
 
+  def show_body_or_image
+    body.present? ? body : '画像が送信されました'
+  end
+
   private
 
   def body_or_image
