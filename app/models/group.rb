@@ -6,6 +6,6 @@ class Group < ApplicationRecord
   validates :name, presence: true
 
   def check_member
-    self.users.any?
+    users.any?
   end
 end

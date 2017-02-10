@@ -7,7 +7,11 @@ class Message < ApplicationRecord
   validate :body_or_image
 
   def time
-    self.created_at.strftime('%F %T')
+    created_at.strftime('%F %T')
+  end
+
+  def message_content
+    image.present? ? '画像が送信されました' : body
   end
 
   private
