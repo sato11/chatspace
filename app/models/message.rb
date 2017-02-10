@@ -10,7 +10,7 @@ class Message < ApplicationRecord
     created_at.strftime('%F %T')
   end
 
-  def content_message
+  def message_content
     image.present? ? '画像が送信されました' : body
   end
 

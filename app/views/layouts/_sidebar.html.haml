@@ -10,4 +10,4 @@
         =link_to(group_messages_path(group)) do
           %li.group
             .group__title= group.name
-            .group__content= group.messages.any? ? group.messages.last.content_message : 'まだメッセージがありません'
+            .group__content= group.messages.any? ? group.messages.last.message_content : 'まだメッセージがありません'
