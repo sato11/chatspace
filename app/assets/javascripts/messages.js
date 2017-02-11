@@ -5,11 +5,24 @@ $(function() {
   var textField = $('#message_body');
   var imageChecker = $('input[type=file]')[0].files.length;
 
-  // チャット画面において10秒おきに画面を更新する
+  $(document).on('turbolinks:load', function() {
+    scrollToBottom();
+  })
+
+  // チャット画面の最下部まで移動する関数
+  function scrollToBottom() {
+    var messageBoard = $('.message-board__content');
+    var scrollToTop = { scrollTop: messageBoard.prop("scrollHeight") };
+    setTimeout(function(){
+      messageBoard.animate(scrollToTop, 1000);
+    })
+  }
+
+  // チャット画面において30秒おきに画面を更新する
   if ($('body').attr('controller') == 'messages') {
     setInterval(function() {
       window.location.reload()
-    }, 10000);
+    }, 30000);
   }
 
   // メッセージ毎にhtmlを構築する作業を関数として定義
@@ -83,8 +96,8 @@ $(function() {
       .done(function(data) {
         $('.messages').append(buildHTML(data));
         resetInput($('#message_body'));
-        window.scrollTo(0, document.body.scrollHeight);
         imageChecker = $('input[type=file]')[0].files.length; // 変数を初期化する
+        scrollToBottom();
       })
       .fail(function() {
         alert('error communicating');
