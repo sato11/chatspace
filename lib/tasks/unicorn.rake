@@ -9,6 +9,9 @@ namespace :unicorn do
   desc 'Stop unicorn'
   task(:stop) { unicorn_signal :QUIT }
 
+  desc 'Restart unicorn with USR2'
+  task(:restart) { unicorn_signal :USR2 }
+
   # Helpers
   def unicorn_signal(signal)
     Process.kill signal, unicorn_pid
