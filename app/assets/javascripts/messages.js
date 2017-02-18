@@ -5,9 +5,7 @@ $(function() {
   var textField = $('#message_body');
   var imageChecker = $('input[type=file]')[0].files.length;
 
-  $(document).on('turbolinks:load', function() {
-    scrollToBottom();
-  })
+  scrollToBottom();
 
   // チャット画面の最下部まで移動する関数
   function scrollToBottom() {
