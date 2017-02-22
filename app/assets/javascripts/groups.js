@@ -1,4 +1,6 @@
 $(function() {
+  var textField = $('#user-search-field input');
+
   // 検索結果のユーザーを表示するためのHTMLを作成する
   function addUserHTML(user) {
     var html = $(`
@@ -23,10 +25,9 @@ $(function() {
   }
 
   // ユーザー検索時にjsonと通信する
-  $('#user-search-field .chat-group-form__input').on('keyup', function(e) {
+  $( textField ).on('keyup', function(e) {
     e.preventDefault();
-    var $textField = $('#user-search-field .chat-group-form__input');
-    var input = $textField.val();
+    var input = $( textField ).val();
     $.ajax('/groups/new.json')
       .done(function(data) {
         $('#result-field li').remove();
