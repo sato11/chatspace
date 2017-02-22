@@ -55,7 +55,7 @@ $(function() {
     $('#added-users').append(html);
     $('#user-search-field .chat-group-form__input').val('');
     // collection_check_boxesの該当ユーザーにチェックを入れる
-    $('input[value=' + id + ']').prop("checked", true);
+    $(`input[value=${id}]`).prop("checked", true);
     // 検索結果を初期化する
     $('.result-list').remove();
   });
@@ -65,6 +65,6 @@ $(function() {
     $(this).parent().remove();
     // collection_check_boxesの該当ユーザーからチェックを外す
     var id = $(this).next().attr('value');
-    $('input[value=' + id + ']').prop("checked", false);
+    $(`input[value=${id}]`).prop("checked", false);
   });
 });
