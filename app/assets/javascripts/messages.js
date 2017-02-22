@@ -28,22 +28,20 @@ $(function() {
   // 部分テンプレート_messageの構造に沿う
   function buildHTML(message) {
     var user = $('.sidebar__top-left').html();
+    // 画像が存在しないときは空にすることでエラーを避ける
+    if ( imageChecker === 0 ) { message.image = ''; }
     var html = $(`
       <li class="message">
         <div class="message__user">
           <span class="message__user-name">${user}</span>
           <span class="message__posted-time">${message.time}</span>
-        <div class="message__content">${message.body}</div>
+        <div class="message__content">${message.body}
+          <div class="message__image">
+            <img src="${message.image}">
+          </div>
+        </div>
       </li>
     `);
-    // 画像が送信された時にのみ画像表示テンプレートを当てる
-    if (imageChecker !== 0) {
-      html.append(`
-        <div class="message__image">
-          <img src="${message.image}">
-        </div>
-      `);
-    }
     return html;
   }
 
