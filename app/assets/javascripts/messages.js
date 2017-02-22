@@ -1,18 +1,18 @@
 $(function() {
   // 変数の定義
-  var messageForm = $('#new_message');
-  var fileInput = $('#file-input');
-  var textField = $('#message_body');
+  var $messageForm = $('#new_message');
+  var $fileInput = $('#file-input');
+  var $textField = $('#message_body');
   var imageChecker = $('input[type=file]')[0].files.length;
 
   scrollToBottom();
 
   // チャット画面の最下部まで移動する関数
   function scrollToBottom() {
-    var messageBoard = $('.message-board__content');
+    var $messageBoard = $('.message-board__content');
     setTimeout(function(){
-      messageBoard.animate({
-        scrollTop: messageBoard.prop('scrollHeight')
+      $messageBoard.animate({
+        scrollTop: $messageBoard.prop('scrollHeight')
       }, 1000);
     }, 100);
   }
@@ -30,7 +30,7 @@ $(function() {
     var user = $('.sidebar__top-left').html();
     // 画像が存在しないときは空にすることでエラーを避ける
     if ( imageChecker === 0 ) { message.image = ''; }
-    var html = $(`
+    var $html = $(`
       <li class="message">
         <div class="message__user">
           <span class="message__user-name">${user}</span>
@@ -42,7 +42,7 @@ $(function() {
         </div>
       </li>
     `);
-    return html;
+    return $html;
   }
 
   // formDataの形式を整える
@@ -63,17 +63,17 @@ $(function() {
   }
 
   // 画像は選択されると自動的に送信される
-  fileInput.on('change', function() {
+  $fileInput.on('change', function() {
     imageChecker = 1; // 一時的に変数を書き換えてバリデーションを通す
-    messageForm.trigger('submit');
+    $messageForm.trigger('submit');
     resetInput($(this));
   });
 
   // submit時にjsonで非同期通信を行う
-  messageForm.on('submit', function(e) {
+  $messageForm.on('submit', function(e) {
     e.preventDefault();
     // テキストと画像の両方が空の際は処理に進まないバリデーション
-    if ( !textField.val() && imageChecker === 0 ) {
+    if ( !$textField.val() && imageChecker === 0 ) {
       alert('either text or image is required');
     } else {
       var formData = buildFormData( $(this) );

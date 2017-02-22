@@ -25,8 +25,8 @@ $(function() {
   // ユーザー検索時にjsonと通信する
   $('#user-search-field .chat-group-form__input').on('keyup', function(e) {
     e.preventDefault();
-    var textField = $('#user-search-field .chat-group-form__input');
-    var input = textField.val();
+    var $textField = $('#user-search-field .chat-group-form__input');
+    var input = $textField.val();
     $.ajax('/groups/new.json')
       .done(function(data) {
         $('#result-field li').remove();
@@ -39,14 +39,14 @@ $(function() {
 
   // ユーザー追加時にチャットメンバーに表示するためのHTMLを作成する
   function addedUserHTML(name, id) {
-    var html = $(`
+    var $html = $(`
       <li class="chat-group-user">
         <div class="chat-group-user__name">${name}</div>
         <div class="chat-group-user__btn chat-group-user__btn--remove">削除</div>
         <input value="${id}" type="hidden">
       </li>
       `);
-    return html;
+    return $html;
   }
 
   // 追加ボタンがクリックされた時に該当するユーザーの名前とidを取得してチャットメンバーに表示する
