@@ -16,11 +16,8 @@ $(function() {
   // jsonで受け取ったUsers.allの配列を入力された値と照合し、一致するユーザーを判定する
   function getUser(users, input) {
     $.each(users, function(i, user) {
-      var name = user.name;
       var reg = RegExp("^" + input);
-      if (input.length !== 0 && name.match(reg)) {
-        addUserHTML(user);
-      }
+      if ( input.length !== 0 && user.name.match(reg) ) { addUserHTML(user); }
     });
   }
 
