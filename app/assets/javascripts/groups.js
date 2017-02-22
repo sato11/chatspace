@@ -1,15 +1,13 @@
 $(function() {
   // 検索結果のユーザーを表示するためのHTMLを作成する
   function addUserHTML(user) {
-    var html = $('<li class="result-list">').append(
-                    '<span class="result-list--left">' +
-                      user.name +
-                    '</span>' +
-                    '<span class="result-list--right">' +
-                      "追加" +
-                    '</span>' +
-                    '<input value="' + user.id +  '" type="hidden">' +
-                  '</li>');
+    var html = $(`
+      <li class="result-list">
+        <span class="result-list--left">${user.name}</span>
+        <span class="result-list--right">追加</span>
+        <input value="${user.id}" type="hidden">
+      </li>
+      `);
     $('#result-field').append(html);
   }
 
@@ -41,15 +39,13 @@ $(function() {
 
   // ユーザー追加時にチャットメンバーに表示するためのHTMLを作成する
   function addedUserHTML(name, id) {
-    var html = $('<li class="chat-group-user">').append(
-                    '<div class="chat-group-user__name">' +
-                      name +
-                    '</div>' +
-                    '<div class="chat-group-user__btn chat-group-user__btn--remove">' +
-                      "削除" +
-                    '</div>' +
-                    '<input value="' + id +  '" type="hidden">' +
-                  '</li>');
+    var html = $(`
+      <li class="chat-group-user">
+        <div class="chat-group-user__name">${name}</div>
+        <div class="chat-group-user__btn chat-group-user__btn--remove">削除</div>
+        <input value="${id}" type="hidden">
+      </li>
+      `);
     return html;
   }
 
