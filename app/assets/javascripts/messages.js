@@ -10,10 +10,11 @@ $(function() {
   // チャット画面の最下部まで移動する関数
   function scrollToBottom() {
     var messageBoard = $('.message-board__content');
-    var scrollToTop = { scrollTop: messageBoard.prop("scrollHeight") };
     setTimeout(function(){
-      messageBoard.animate(scrollToTop, 1000);
-    })
+      messageBoard.animate({
+        scrollTop: messageBoard.prop('scrollHeight')
+      }, 1000);
+    }, 100);
   }
 
   // チャット画面において30秒おきに画面を更新する
