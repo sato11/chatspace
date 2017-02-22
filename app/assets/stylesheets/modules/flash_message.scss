@@ -4,11 +4,18 @@
   line-height: 30px;
   color: white;
   text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
   p.flash-message__notice {
     background-color: $blue;
     position: fixed;
     width: 100%;
   }
+
   p.flash-message__alert {
     background-color: $red;
     position: fixed;

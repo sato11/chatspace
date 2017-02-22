@@ -7,7 +7,6 @@ gem 'puma', '~> 3.0'                      # Use Puma as the app server
 gem 'sass-rails', '~> 5.0'                # Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0'                # Use Uglifier as compressor for JavaScript assets
 gem 'jquery-rails'                        # Use jquery as the JavaScript library
-gem 'turbolinks', '~> 5'                  # Turbolinks makes navigating your web application faster
 gem 'jbuilder', '~> 2.5'                  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
