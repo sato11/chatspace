@@ -9,7 +9,7 @@ $( function() {
                 <span class="result-list--right">追加</span>
                 <input value="${user.id}" type="hidden">
             </li>
-          ` );
+        ` );
         $( '#result-field' ).append( html );
     }
 
@@ -43,7 +43,7 @@ $( function() {
                 <div class="chat-group-user__btn chat-group-user__btn--remove">削除</div>
                 <input value="${id}" type="hidden">
             </li>
-          ` );
+        ` );
         return $html;
     }
 
