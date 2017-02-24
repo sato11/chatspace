@@ -1,5 +1,5 @@
 $( function() {
-  var textField = $( '#user-search-field input' );
+  var $textField = $( '#user-search-field input' );
 
   // 検索結果のユーザーを表示するためのHTMLを作成する
   function addUserHTML( user ) {
@@ -22,9 +22,9 @@ $( function() {
   }
 
   // ユーザー検索時にjsonと通信する
-  $( textField ).on( 'keyup', function( e ) {
+  $textField.on( 'keyup', function( e ) {
     e.preventDefault();
-    var input = $( textField ).val();
+    var input = $textField.val();
     $.ajax( '/groups/new.json' )
       .done( function( data ) {
         $( '#result-field li' ).remove();
