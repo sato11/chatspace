@@ -1,0 +1,31 @@
+{
+  "name": "chatspace",
+  "version": "0.0.0",
+  "description": "## 開発環境 * Ruby 2.3.1 * Rails 5.0.0.1",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint app/assets/javascripts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sato11/chatspace.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sato11/chatspace/issues"
+  },
+  "homepage": "https://github.com/sato11/chatspace",
+  "devDependencies": {
+    "eslint": "~3.16.0",
+    "eslint-config-airbnb-base": "^11.1.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-promise": "^3.4.2",
+    "eslint-plugin-standard": "^2.0.1"
+  }
+}
