@@ -21,7 +21,7 @@ $( function() {
         });
     }
 
-      // ユーザー検索時にjsonと通信する
+    // ユーザー検索時にjsonと通信する
     $textField.on( 'keyup', function( e ) {
         e.preventDefault();
         var input = $textField.val();
