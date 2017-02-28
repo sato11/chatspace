@@ -11,5 +11,5 @@
           %li.group
             .group__top-content
               %span.group__top-content-title= group.name
-              %span.group__top-content-updated-at= group.messages.any? ? group.messages.last.time : group.created_at.strftime('%F %T')
+              %span.group__top-content-updated-at= group.messages.any? ? group.messages.last.sidebar_time : group.sidebar_time
             .group__bottom-content= group.messages.any? ? group.messages.last.message_content : 'まだメッセージがありません'
