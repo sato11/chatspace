@@ -8,4 +8,12 @@ class Group < ApplicationRecord
   def check_member
     users.any?
   end
+
+  def check_content
+    messages.any? ? messages.last.message_content : 'まだメッセージがありません'
+  end
+
+  def check_time
+    messages.any? ? messages.last.sidebar_time : sidebar_time
+  end
 end
