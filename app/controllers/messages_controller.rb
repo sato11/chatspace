@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
 
   def set_variables
     @group = Group.find(params[:group_id])
-    @groups = current_user.groups
+    @groups = current_user.sorted_groups
     @members = @group.group_members
     @message = Message.new
     @messages = Message.includes(:user).where(group_id: @group.id)
