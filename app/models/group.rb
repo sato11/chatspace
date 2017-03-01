@@ -13,6 +13,8 @@ class Group < ApplicationRecord
     messages.any? ? messages.last.message_content : 'まだメッセージがありません'
   end
 
+  # display the time the latest message was posted if the group has any message
+  # otherwise display the time the group was created
   def check_time
     messages.any? ? messages.last.sidebar_time : sidebar_time
   end

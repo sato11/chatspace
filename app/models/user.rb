@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
+  # sort groups by the time the latest messaage was posted or
+  # the time a group was created if it doesn't have any message yet
   def sorted_groups
     groups.sort_by do |group|
       if group.messages.any?

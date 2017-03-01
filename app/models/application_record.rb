@@ -1,6 +1,7 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
+  # define regular expressions for the sidebar time display
   def sidebar_time
     c = created_at
     if c.today?
