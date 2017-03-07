@@ -1,7 +1,8 @@
 @import "./reset";
 @import "font-awesome";
-@import "./mixin/clearfix";
+@import "./base/*";
+@import "./mixin/*";
+@import "./modules/*";
 @import "./chat_groups";
-@import "./user";
-@import "./modules/flash_message";
 @import "./group";
+@import "./user";
