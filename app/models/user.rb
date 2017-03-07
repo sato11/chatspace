@@ -14,11 +14,7 @@ class User < ApplicationRecord
   # the time a group was created if it doesn't have any message yet
   def sorted_groups
     groups.sort_by do |group|
-      if group.messages.any?
-        group.messages.last.created_at
-      else
-        group.created_at
-      end
+      group.messages.last&.created_at || group.created_at
     end.reverse!
   end
 end
