@@ -11,7 +11,7 @@ class Message < ApplicationRecord
   end
 
   def message_content
-    image.present? ? '画像が送信されました' : body
+    image? ? '画像が送信されました' : body
   end
 
   private
