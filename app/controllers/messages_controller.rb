@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_variables
+  before_action :set_group, :set_groups, :set_members, :set_message, :set_messages
 
   def index; end
 
@@ -18,11 +18,23 @@ class MessagesController < ApplicationController
 
   private
 
-  def set_variables
+  def set_group
     @group = Group.find(params[:group_id])
-    @groups = current_user.groups
+  end
+
+  def set_groups
+    @groups = current_user.sorted_groups
+  end
+
+  def set_members
     @members = @group.group_members
+  end
+
+  def set_message
     @message = Message.new
+  end
+
+  def set_messages
     @messages = Message.includes(:user).where(group_id: @group.id)
   end
 

@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   before_action :set_members, only: [:new, :create]
 
   def index
-    @groups = current_user.groups
+    @groups = current_user.sorted_groups
   end
 
   def new; end

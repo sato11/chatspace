@@ -1,5 +1,3 @@
-@import "./color";
-@import "./mixin/position_absolute";
 .contents {
   min-width: 980px;
 
@@ -53,12 +51,24 @@
             background-color: $lightNavy;
           }
 
-          .group__title {
-            color: white;
-            font-size: 15px;
+          .group__top-content {
+            @include clearfix();
+
+            &-title {
+              color: white;
+              float: left;
+              font-size: 15px;
+            }
+
+            &-updated-at {
+              color: white;
+              float: right;
+              font-size: 10px;
+              padding-top: 5px;
+            }
           }
 
-          .group__content {
+          .group__bottom-content {
             color: white;
             font-size: 11px;
             margin-top: 5px;
