@@ -1,9 +1,11 @@
 $( function() {
     // 変数の定義
+    var $messages = $( '#messages' );
     var $messageForm = $( '#new_message' );
     var $fileInput = $( '#file-input' );
     var $textField = $( '#message_body' );
     var imageChecker = $( 'input[type=file]' )[0].files.length;
+    var path = location.pathname;
 
     scrollToBottom();
 
@@ -17,21 +19,37 @@ $( function() {
         }, 100 );
     }
 
-    // チャット画面において30秒おきに画面を更新する
-    if ( $( 'body' ).attr( 'controller' ) == 'messages' ) {
-        setInterval( function() {
-            window.location.reload();
-        }, 30000 );
-    }
+    // チャット画面において3秒おきに画面を更新する
+    var auto_reload = setInterval( function() {
+        if (  path.match( /groups\/\d\/message/ )) {
+            var last_message_id = $messages.children().last().data( 'messageId' );
+            $.ajax({
+                type: 'GET',
+                url: path + '.json',
+                data: {
+                    last_message_id: last_message_id
+                }
+            })
+            .done( function( data ) {
+                $.each( data, function( i, message ) {
+                    $( '#messages' ).append( buildHTML( message ));
+                    resetInput( $( '#message_body' ));
+                    scrollToBottom();
+                });
+            });
+        } else {
+            clearInterval( auto_reload );
+        }
+    }, 3000 );
 
     // メッセージ毎にhtmlを構築する作業を関数として定義
     // 部分テンプレート_messageの構造に沿う
     function buildHTML( message ) {
         var user = $( '.sidebar__top-left' ).html();
         // 画像が存在しないときは空にすることでエラーを避ける
-        if ( imageChecker === 0 ) { message.image = ''; }
+        if ( message.image === null ) { message.image = ''; }
         var $html = $( `
-            <li class="message">
+            <li class="message" data-message-id="${message.id}">
                 <div class="message__user">
                     <span class="message__user-name">${user}</span>
                     <span class="message__posted-time">${message.time}</span>
@@ -85,7 +103,7 @@ $( function() {
                 contentType: false
             })
             .done( function( data ) {
-                $( '.messages' ).append( buildHTML( data ));
+                $( '#messages' ).append( buildHTML( data ));
                 resetInput( $( '#message_body' ));
                 imageChecker = $( 'input[type=file]' )[0].files.length; // 変数を初期化する
                 scrollToBottom();

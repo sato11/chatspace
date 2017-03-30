@@ -132,7 +132,7 @@
       height: calc(100% - 190px);
       overflow-y: scroll;
 
-      ul.messages li.message {
+      #messages li.message {
         .message__user {
           padding-top: 20px;
 
