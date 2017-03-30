@@ -21,7 +21,7 @@ $( function() {
 
     // チャット画面において3秒おきに画面を更新する
     var auto_reload = setInterval( function() {
-        if (  path.match( /groups\/\d\/message/ )) {
+        if (  path.match( /groups\/\d+\/message/ )) {
             var last_message_id = $messages.children().last().data( 'messageId' );
             $.ajax({
                 type: 'GET',
