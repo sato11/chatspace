@@ -1,7 +1,14 @@
 class MessagesController < ApplicationController
   before_action :set_group, :set_groups, :set_members, :set_message, :set_messages
 
-  def index; end
+  def index
+    respond_to do |format|
+      format.html
+      format.json do
+        @messages = @group.messages.where('id > ?', params[:last_message_id])
+      end
+    end
+  end
 
   def create
     @message = Message.new(create_params)
