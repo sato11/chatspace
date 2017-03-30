@@ -29,4 +29,29 @@ describe Message do
       expect(message.errors[:message]).to include 'メッセージが投稿されませんでした'
     end
   end
+
+  describe '#time' do
+    it "trims the message's created_at parameter with strftime" do
+      message = create(:message)
+      expect(message.time).to eq message.created_at.strftime('%F %T')
+    end
+  end
+
+  describe '#message_content' do
+    subject { @message.message_content }
+
+    context 'when the message has an image' do
+      it 'announces that the image is sent' do
+        @message = create(:message)
+        is_expected.to eq '画像が送信されました'
+      end
+    end
+
+    context 'when the message has no image' do
+      it "returns the message's body" do
+        @message = create(:message, image: '')
+        is_expected.to eq @message.body
+      end
+    end
+  end
 end
