@@ -10,7 +10,7 @@
       .message-board__header-right
         = link_to "Edit", edit_group_path(@group)
     .message-board__content
-      %ul.messages
+      %ul#messages
         = render @messages
     .message-board__footer
       #message-form
