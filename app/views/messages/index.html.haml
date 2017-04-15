@@ -4,9 +4,9 @@
     .message-board__header
       .message-board__header-left
         .header__group-name= @group.name
-        %span.header__group-members Members:
-        - @members.each do |member|
-          %span.header__group-members= member.user.name
+        .header__group-members
+          Members:
+          = truncate(@users.pluck(:name).join(', '), length: 170)
       .message-board__header-right
         = link_to "Edit", edit_group_path(@group)
     .message-board__content

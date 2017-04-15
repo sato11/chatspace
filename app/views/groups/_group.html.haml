@@ -1,6 +1,6 @@
 = link_to(group_messages_path(group)) do
   %li.group
     .group__top-content
-      %span.group__top-content-title= group.name
+      %span.group__top-content-title= truncate(group.name, length: 26)
       %span.group__top-content-updated-at= group.check_time
-    .group__bottom-content= group.check_content
+    .group__bottom-content= truncate(group.check_content, length: 150)

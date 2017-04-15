@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_group, :set_groups, :set_members, :set_message, :set_messages
+  before_action :set_group, :set_groups, :set_users, :set_message, :set_messages
 
   def index
     respond_to do |format|
@@ -33,8 +33,8 @@ class MessagesController < ApplicationController
     @groups = current_user.sorted_groups
   end
 
-  def set_members
-    @members = @group.group_members
+  def set_users
+    @users = @group.users
   end
 
   def set_message
