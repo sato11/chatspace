@@ -13,7 +13,7 @@ class User < ApplicationRecord
   # sort groups by the time the latest messaage was posted or
   # the time a group was created if it doesn't have any message yet
   def sorted_groups
-    groups.sort_by do |group|
+    groups.includes(:messages).sort_by do |group|
       group.messages.last&.created_at || group.created_at
     end.reverse!
   end
