@@ -6,16 +6,8 @@
       = render "devise/shared/links"
     .account-page__inner--right.user-form
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .field
-          .field-label
-            = f.label :email
-          .field-input
-            = f.email_field :email, autofocus: true
-          .field
-            .field-label
-              = f.label :password
-              %i (英数字8文字以上)
-            .field-input
-              = f.password_field :password, autocomplete: "off"
-          .actions
-            = f.submit "Log in", class: 'btn'
+        - p = DevisePresenter.new(f, self)
+        = p.text_field_block(:email, 'メールアドレス', autofocus: true)
+        = p.password_field_block(:password, 'パスワード', autocomplete: true, message: '(英数字8文字以上)')
+        .actions
+          = f.submit "Log in", class: 'btn'
