@@ -7,26 +7,10 @@
     .account-page__inner--right.user-form
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = devise_error_messages!
-        .field
-          .field-label
-            = f.label :name
-          .field-input
-            = f.text_field :name, autofocus: true
-        .field
-          .field-label
-            = f.label :email
-          .field-input
-            = f.email_field :email
-        .field
-          .field-label
-            = f.label :password
-            %i (英数字8文字以上)
-          .field-input
-            = f.password_field :password, autocomplete: "off"
-        .field
-          .field-label
-            = f.label :password_confirmation
-          .field-input
-            = f.password_field :password_confirmation, autocomplete: "off"
+        - p = DevisePresenter.new(f, self)
+        = p.text_field_block(:name, '名前', autofocus: true)
+        = p.text_field_block(:email, 'メールアドレス')
+        = p.password_field_block(:password, 'パスワード', autocomplete: 'off', message: '(英数字8文字以上)')
+        = p.password_field_block(:password_confirmation, 'パスワード', autocomplete: 'off', message: '(確認)')
         .actions
           = f.submit "Create Account", class: 'btn'
