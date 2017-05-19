@@ -1,4 +1,6 @@
 class Message < ApplicationRecord
+  include TimeFormatNormalizer
+
   belongs_to :user
   belongs_to :group
 
