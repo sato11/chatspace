@@ -17,9 +17,7 @@ $( function() {
     function getUser( users, input ) {
         var reg = RegExp( '^' + input );
         $.each( users, function( i, user ) {
-            $.each( user.name.toLowerCase().split( ' ' ), function( i, name ) {
-                if ( input.length !== 0 && name.match( reg )) { addUserHTML( user ); }
-            });
+            if ( input.length !== 0 && user.name.toLowerCase().match( reg )) { addUserHTML( user ); }
         });
     }
 
