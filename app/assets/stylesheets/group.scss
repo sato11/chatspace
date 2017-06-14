@@ -240,6 +240,11 @@ $textarea_height: 50px;
     text-align: center;
   }
 
+  h2 {
+    font-size: 18px;
+    text-align: center;
+  }
+
   #new_chat_group {
     @include clearfix();
   }
