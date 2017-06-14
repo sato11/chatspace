@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   resources :groups, except: [:destroy] do
     resources :messages, only: [:index, :create]
   end
+
   root to: 'groups#index'
+  get '*anything' => 'errors#routing_error'
 end
