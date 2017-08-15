@@ -1,4 +1,11 @@
 /*eslint-env node*/
 
-const gulp = require( 'gulp' );
-gulp.task( 'default', ['clean'] );
+const gulp        = require( 'gulp' );
+const runSequence = require( 'run-sequence' );
+
+gulp.task( 'default', () => {
+    runSequence(
+        'clean',
+        ['compile-sass', 'compile-scss']
+    );
+});
