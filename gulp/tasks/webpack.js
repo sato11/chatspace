@@ -6,6 +6,7 @@ const webpack       = require( 'gulp-webpack' );
 const webpackConfig = require( './webpack.config.js' );
 const rev           = require( 'gulp-rev' );
 const uglify        = require( 'gulp-uglify' );
+const notify        = require( 'gulp-notify' );
 
 gulp.task( 'webpack', () => {
     gulp.src( config.javascript.src )
@@ -14,5 +15,6 @@ gulp.task( 'webpack', () => {
         .pipe( rev())
         .pipe( gulp.dest( webpackConfig.output.publicPath ))
         .pipe( rev.manifest( config.rev.dest, config.rev.opts ))
-        .pipe( gulp.dest( config.publicAssets ));
+        .pipe( gulp.dest( config.publicAssets ))
+        .pipe( notify( 'finish webpack' ));
 });
