@@ -32,5 +32,6 @@
 # Ignore public/assets
 /public/assets
 
-# Ignore node_modules directory
+# Ignore node_modules/ and package-lock.json
 /node_modules
+package-lock.json
