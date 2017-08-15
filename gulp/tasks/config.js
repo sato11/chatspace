@@ -16,7 +16,6 @@ module.exports = {
     },
     watch: {
         javascript:     gulpAssets + '/javascripts/**/*',
-        stylesheetSass: gulpAssets + '/stylesheets/**/*.sass',
         stylesheetScss: gulpAssets + '/stylesheets/**/*.scss',
         browserSync:    'public/**/*'
     },
