@@ -2,13 +2,7 @@
 
 const config = require( './config' );
 const gulp   = require( 'gulp' );
-const sass   = require( 'sass' );
-
-gulp.task( 'compile-sass', () => {
-    gulp.src( config.stylesheet.srcSass )
-        .pipe( sass())
-        .pipe( gulp.dest( config.stylesheet.dest ));
-});
+const sass   = require( 'gulp-sass' );
 
 gulp.task( 'compile-scss', () => {
     gulp.src( config.stylesheet.srcScss )

@@ -11,8 +11,7 @@ module.exports = {
         dest: publicAssets + '/javascripts'
     },
     stylesheet: {
-        srcSass:  gulpAssets   + '/stylesheets/**/*.sass',
-        srcScss:  gulpAssets   + '/stylesheets/**/*.scss',
+        srcScss:  gulpAssets   + '/stylesheets/application.scss',
         dest:     publicAssets + '/stylesheets'
     },
     watch: {
