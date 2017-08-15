@@ -7,6 +7,7 @@ gulp.task( 'default', () => {
     runSequence(
         'clean',
         'compile-scss',
-        'webpack'
+        'webpack',
+        'bower'
     );
 });

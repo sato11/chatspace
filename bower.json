@@ -1,0 +1,16 @@
+{
+  "name": "chatspace",
+  "description": "",
+  "main": "/public/assets/application.js",
+  "homepage": "https://github.com/sato11/chatspace",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
