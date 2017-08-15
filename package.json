@@ -27,6 +27,8 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-promise": "^3.4.2",
     "eslint-plugin-standard": "^2.0.1",
-    "gulp": "^3.9.1"
-  }
+    "gulp": "^3.9.1",
+    "require-dir": "^0.3.2"
+  },
+  "dependencies": {}
 }
