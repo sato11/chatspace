@@ -8,8 +8,6 @@ Bundler.require(*Rails.groups)
 
 module Chatspace
   class Application < Rails::Application
-    config.assets.paths << Rails.root.join('public', 'assets', 'stylesheets')
-    config.assets.paths << Rails.root.join('public', 'assets', 'javascripts')
     config.generators do |g|
       g.assets false
       g.helper false

@@ -2,6 +2,13 @@
 
 const gulpAssets   = 'gulp/assets';
 const publicAssets = 'public/assets';
+const minimist     = require( 'minimist' );
+
+const envOption = {
+    string: 'env',
+    default: { env: process.env.NODE_ENV || 'development' }
+};
+const options     = minimist( process.argv.slice( 2 ), envOption );
 
 module.exports = {
     gulpAssets:   gulpAssets,
@@ -28,5 +35,6 @@ module.exports = {
             base:  process.cwd() + '/' + publicAssets,
             merge: true
         }
-    }
+    },
+    isProduction: options.env === 'production' ? true : false
 };

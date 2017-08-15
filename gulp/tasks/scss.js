@@ -8,16 +8,17 @@ const rename    = require( 'gulp-rename' );
 const rev       = require( 'gulp-rev' );
 const minifyCss = require( 'gulp-minify-css' );
 const notify    = require( 'gulp-notify' );
+const gulpIf    = require( 'gulp-if' );
 
 gulp.task( 'compile-scss', () => {
     gulp.src( config.stylesheet.srcScss )
         .pipe( sassGlob())
         .pipe( sass())
-        .pipe( minifyCss())
-        .pipe( rename({ suffix: '.bundle' }))
-        .pipe( rev())
+        .pipe( gulpIf( config.isProduction, minifyCss()))
+        .pipe( gulpIf( config.isProduction, rename({ suffix: '.bundle' })))
+        .pipe( gulpIf( config.isProduction, rev()))
         .pipe( gulp.dest( config.stylesheet.dest ))
-        .pipe( rev.manifest( config.rev.dest, config.rev.opts ))
-        .pipe( gulp.dest( config.publicAssets ))
+        .pipe( gulpIf( config.isProduction, rev.manifest( config.rev.dest, config.rev.opts )))
+        .pipe( gulpIf( config.isProduction, gulp.dest( config.publicAssets )))
         .pipe( notify( 'finish compile-scss' ));
 });
