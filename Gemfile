@@ -38,6 +38,7 @@ group :development, :test do
   # capistrano
   gem 'capistrano'
   gem 'capistrano-bundler'
+  gem 'capistrano-npm'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
