@@ -7,9 +7,11 @@ gulp.task( 'default', () => {
     runSequence(
         'clean',
         'fonts',
-        'compile-scss',
-        'webpack',
         'installBower',
-        'concatBower'
+        /*
+          Tasks below are excuted after 'installBower' is completed.
+          ['concatBower', 'compile-scss'],
+        */
+        'webpack'
     );
 });

@@ -4,7 +4,7 @@ lock "3.7.1"
 set :application, 'rails-capistrano-test'
 set :repo_url, 'git@github.com:sato11/chatspace.git'
 
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads', 'node_modules')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads', 'node_modules', 'bower_components')
 
 set :branch, ENV['BRANCH'] if ENV['BRANCH']
 

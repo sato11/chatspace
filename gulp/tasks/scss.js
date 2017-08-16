@@ -10,7 +10,7 @@ const minifyCss = require( 'gulp-minify-css' );
 const notify    = require( 'gulp-notify' );
 const gulpIf    = require( 'gulp-if' );
 
-gulp.task( 'compile-scss', () => {
+gulp.task( 'compile-scss', ['installBower'], () => {
     gulp.src( config.stylesheet.srcScss )
         .pipe( sassGlob())
         .pipe( sass())
