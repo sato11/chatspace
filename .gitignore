@@ -29,8 +29,9 @@
 # Ignore dotenv environemt configuration
 /.env
 
-# Ignore public/assets
+# Ignore public/
 /public/assets
+/public/fonts
 
 # Ignore node_modules/ and package-lock.json
 /node_modules

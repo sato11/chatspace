@@ -1,5 +1,7 @@
 /*eslint-env node*/
 
+const bowerDir     = 'bower_components';
+const fontsDir     = 'public/fonts';
 const gulpAssets   = 'gulp/assets';
 const publicAssets = 'public/assets';
 const minimist     = require( 'minimist' );
@@ -13,6 +15,10 @@ const options     = minimist( process.argv.slice( 2 ), envOption );
 module.exports = {
     gulpAssets:   gulpAssets,
     publicAssets: publicAssets,
+    fonts: {
+        src:  bowerDir     + '/font-awesome/fonts/**.*',
+        dest: fontsDir
+    },
     javascript: {
         src:  gulpAssets   + '/javascripts/**/*',
         dest: publicAssets + '/javascripts'
