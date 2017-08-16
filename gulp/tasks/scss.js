@@ -20,5 +20,5 @@ gulp.task( 'compile-scss', () => {
         .pipe( gulp.dest( config.stylesheet.dest ))
         .pipe( gulpIf( config.isProduction, rev.manifest( config.rev.dest, config.rev.opts )))
         .pipe( gulpIf( config.isProduction, gulp.dest( config.publicAssets )))
-        .pipe( notify( 'finish compile-scss' ));
+        .pipe( gulpIf( !config.isProduction, notify( 'finish compile-scss' )));
 });

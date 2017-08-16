@@ -7,8 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint app/assets/javascripts"
+    "build": "NODE_ENV=production gulp"
   },
   "repository": {
     "type": "git",
@@ -39,6 +38,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-filter": "^5.0.1",
     "gulp-if": "^2.0.2",
+    "gulp-install": "^1.1.0",
     "gulp-minify-css": "^1.2.4",
     "gulp-notify": "^3.0.0",
     "gulp-rename": "^1.2.2",
@@ -51,8 +51,5 @@
     "minimist": "^1.2.0",
     "require-dir": "^0.3.2",
     "run-sequence": "^2.1.0"
-  },
-  "scripts": {
-    "build": "NODE_ENV=production gulp"
   }
 }

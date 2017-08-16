@@ -17,5 +17,5 @@ gulp.task( 'webpack', () => {
         .pipe( gulp.dest( webpackConfig.output.publicPath ))
         .pipe( gulpIf( config.isProduction, rev.manifest( config.rev.dest, config.rev.opts )))
         .pipe( gulpIf( config.isProduction, gulp.dest( config.publicAssets )))
-        .pipe( notify( 'finish webpack' ));
+        .pipe( gulpIf( !config.isProduction, notify( 'finish webpack' )));
 });

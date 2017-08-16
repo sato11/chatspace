@@ -9,6 +9,7 @@ gulp.task( 'default', () => {
         'fonts',
         'compile-scss',
         'webpack',
-        'bower'
+        'installBower',
+        'concatBower'
     );
 });

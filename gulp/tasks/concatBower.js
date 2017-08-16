@@ -7,7 +7,7 @@ const concat = require( 'gulp-concat' );
 const notify = require( 'gulp-notify' );
 const filter = require( 'gulp-filter' );
 
-gulp.task( 'bower', () => {
+gulp.task( 'concatBower', () => {
     gulp.src( bower())
         .pipe( filter( '**/*.js' ))
         .pipe( concat( 'bower.js' ))
