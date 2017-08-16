@@ -4,6 +4,6 @@ const gulp    = require( 'gulp' );
 const install = require( 'gulp-install' );
 
 gulp.task( 'installBower', () => {
-    gulp.src( 'bower.json' )
+    return gulp.src( 'bower.json' )
         .pipe( install());
 });
