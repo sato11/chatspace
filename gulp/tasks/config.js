@@ -3,7 +3,7 @@
 const bowerDir     = 'bower_components';
 const fontsDir     = 'public/fonts';
 const gulpAssets   = 'gulp/assets';
-const publicAssets = 'public/assets';
+const publicAssets = 'app/assets';
 const minimist     = require( 'minimist' );
 
 const envOption = {
@@ -30,7 +30,7 @@ module.exports = {
     watch: {
         javascript:     gulpAssets + '/javascripts/**/*',
         stylesheetScss: gulpAssets + '/stylesheets/**/*.scss',
-        browserSync:    'public/**/*'
+        browserSync:    'app/**/*'
     },
     browserSync: {
         proxy: 'localhost:3000'

@@ -6,9 +6,8 @@ const runSequence = require( 'run-sequence' );
 gulp.task( 'default', () => {
     runSequence(
         'clean',
-        'fonts',
-        'compile-scss',
-        'webpack',
-        'bower'
+        'installBower',
+        ['concatBower', 'compile-scss', 'fonts'],
+        'webpack'
     );
 });

@@ -8,7 +8,7 @@ module.exports = {
         application: glob.sync( `./${config.gulpAssets}/javascripts/**/*` )
     },
     output: {
-        filename: config.isProduction ? '[name].bundle.js' : '[name].js',
+        filename: '[name].js',
         publicPath: config.javascript.dest
     },
     resolve: {
