@@ -17,6 +17,16 @@ set :ssh_options, auth_methods: ['publickey'],
 set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 
+namespace :npm do
+  desc 'Install Bower packages and build javascript with Gulp'
+  task :build do
+    within release_path do
+      execute :npm, :run, 'build'
+    end
+  end
+  after 'npm:install', 'npm:build'
+end
+
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do

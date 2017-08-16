@@ -52,5 +52,7 @@
     "require-dir": "^0.3.2",
     "run-sequence": "^2.1.0"
   },
-  "dependencies": {}
+  "scripts": {
+    "build": "NODE_ENV=production gulp"
+  }
 }
