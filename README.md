@@ -1,4 +1,4 @@
-[![wercker status](https://app.wercker.com/status/2b1998703cd6234fabe0064aba40d6de/s/master "wercker status")](https://app.wercker.com/project/byKey/2b1998703cd6234fabe0064aba40d6de)
+[![wercker status](https://app.wercker.com/status/d33bb0dfda4378cfffc487285f672b72/s/master "wercker status")](https://app.wercker.com/project/byKey/d33bb0dfda4378cfffc487285f672b72)
 
 # README
 
