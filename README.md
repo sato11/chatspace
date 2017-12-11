@@ -1,3 +1,5 @@
+[![wercker status](https://app.wercker.com/status/2b1998703cd6234fabe0064aba40d6de/s/master "wercker status")](https://app.wercker.com/project/byKey/2b1998703cd6234fabe0064aba40d6de)
+
 # README
 
 ## 開発環境

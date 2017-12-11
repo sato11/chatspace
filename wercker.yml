@@ -1,0 +1,28 @@
+box:
+  id: ruby:2.3.1
+  ports:
+    - '8080'
+
+services:
+  - id: mysql:5.7
+    env:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: chatspace_test
+
+build:
+  steps:
+    - bundle-install
+    - rails-database-yml
+
+    - script:
+      name: set up db
+      code: |
+        bundle exec rake db:create RAILS_ENV=test
+        bundle exec rake db:schema:load RAILS_ENV=test
+        bundle exec rake db:seed RAILS_ENV=test
+
+    - script:
+      name: rspec
+      code: bundle exec rspec
